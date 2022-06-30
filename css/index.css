@@ -20,7 +20,8 @@ Use a better box model (opinionated).
 */
 
 html {
-	-webkit-text-size-adjust: 100%; /* 1 */
+	-webkit-text-size-adjust: 100%;
+	/* 1 */
 }
 
 /*
@@ -44,11 +45,20 @@ Grouping content
 /**
 1. Add the correct height in Firefox.
 2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Add a correct margin
+4. Remove the border
 */
 
 hr {
-	height: 0; /* 1 */
-	color: inherit; /* 2 */
+	height: 1px;
+	/* 1 */
+	color: inherit;
+	/* 2 */
+	margin: 1rem 0;
+	/* 3 */
+	border: 0;
+	/* 4 */
+	background-color: var(--global-borderColor);
 }
 
 /*
@@ -88,8 +98,10 @@ pre {
 		Consolas,
 		'Liberation Mono',
 		Menlo,
-		monospace; /* 1 */
-	font-size: 1em; /* 2 */
+		monospace;
+	/* 1 */
+	font-size: 1em;
+	/* 2 */
 }
 
 /*
@@ -107,10 +119,14 @@ input,
 optgroup,
 select,
 textarea {
-	font-family: inherit; /* 1 */
-	font-size: 100%; /* 1 */
-	line-height: 1.15; /* 1 */
-	margin: 0; /* 2 */
+	font-family: inherit;
+	/* 1 */
+	font-size: 100%;
+	/* 1 */
+	line-height: 1.15;
+	/* 1 */
+	margin: 0;
+	/* 2 */
 }
 
 /**
@@ -119,7 +135,8 @@ Remove the inheritance of text transform in Edge and Firefox.
 */
 
 button,
-select { /* 1 */
+select {
+	/* 1 */
 	text-transform: none;
 }
 
@@ -191,8 +208,10 @@ Correct the cursor style of increment and decrement buttons in Safari.
 */
 
 [type='search'] {
-	-webkit-appearance: textfield; /* 1 */
-	outline-offset: -2px; /* 2 */
+	-webkit-appearance: textfield;
+	/* 1 */
+	outline-offset: -2px;
+	/* 2 */
 }
 
 /**
@@ -209,8 +228,10 @@ Remove the inner padding in Chrome and Safari on macOS.
 */
 
 ::-webkit-file-upload-button {
-	-webkit-appearance: button; /* 1 */
-	font: inherit; /* 2 */
+	-webkit-appearance: button;
+	/* 1 */
+	font: inherit;
+	/* 2 */
 }
 
 /*
@@ -224,4 +245,119 @@ Add the correct display in Chrome and Safari.
 
 summary {
 	display: list-item;
+}
+
+/*
+Variables
+=========
+*/
+
+:root {
+	--global-color-alpha: slategray;
+	--global-color-alpha-hue: 210;
+	--global-color-alpha-saturation: 13%;
+
+	--global-neutral-hue: var(--global-color-alpha-hue);
+	--global-neutral-saturation: var(--global-color-alpha-saturation);
+
+	--global-color-neutral-100: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 95%);
+	--global-color-neutral-200: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 85%);
+	--global-color-neutral-300: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 70%);
+	--global-color-neutral-400: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 60%);
+	--global-color-neutral-500: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 45%);
+	--global-color-neutral-600: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 30%);
+	--global-color-neutral-700: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 20%);
+	--global-color-neutral-800: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 15%);
+	--global-color-neutral-900: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 5%);
+
+	--global-backgroundColor: var(--global-color-neutral-100);
+	/* --global-backgroundColor: var(--global-color-alpha); */
+	/* --global-text-color: var(--global-color-neutral-100); */
+	--global-text-color: var(--global-color-neutral-900);
+	--global-meta-color: var(--global-color-neutral-400);
+	--global-link-color: var(--global-text-color);
+	--global-link-hover-color: var(--global-meta-color);
+	--global-selection-backgroundColor: var(--global-text-color);
+	--global-selection-color: var(--global-backgroundColor);
+	--global-borderColor: var(--global-color-neutral-400);
+
+	--global-font-family-alpha: "Suisse Int'l", sans-serif;
+	--global-font-family-beta: "Suisse Works", serif;
+
+	/* --global-font-family-alpha: "Allrounder Grotesk"; */
+	/* --global-font-family-alpha: "Suisse Int'l", sans-serif; */
+	/* --global-font-family-alpha: "Newsreader", serif; */
+	--global-font-family-alpha: serif;
+}
+
+/*
+Page
+====
+*/
+
+html {
+	font-size: calc(20 / 16 * 100%);
+	line-height: 1.5;
+	background-color: var(--global-backgroundColor);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	color: var(--global-text-color);
+	margin: max(1.5rem, 5vw);
+	max-width: 30em;
+	font-family: var(--global-font-family-alpha);
+	font-feature-settings: "zero", "liga", "dlig", "lnum";
+}
+
+footer {
+	margin-top: 3rem;
+	color: var(--global-meta-color);
+}
+
+:any-link {
+	color: var(--global-link-color);
+	/* text-decoration-thickness: from-font; */
+	text-decoration-thickness: .06em;
+}
+
+/*
+Typography
+==========
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul {
+	font-size: 1rem;
+	font-weight: inherit;
+	margin: 1.5rem 0;
+}
+
+:is(h1, h2, h3, h4, h5, h6) {
+	/* font-style: italic; */
+	/* font-weight: bolder; */
+	/* font-family: var(--global-font-family-alpha); */
+}
+
+*+h2 {
+	margin-top: 3rem;
+}
+
+ul {
+	padding: 0;
+}
+
+li+li {
+	margin-top: 0.75rem;
+}
+
+ul li::marker {
+	content: "\002d\0020 ";
 }

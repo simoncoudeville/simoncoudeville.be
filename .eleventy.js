@@ -94,6 +94,13 @@ module.exports = function (eleventyConfig) {
     ghostMode: false
   });
 
+  eleventyConfig.addGlobalData('generated', () => {
+    let now = new Date();
+    return new Intl.DateTimeFormat(
+      'utc', { dateStyle: 'full' }
+    ).format(now);
+  });
+
   return {
     // Control which files Eleventy will process
     // e.g.: *.md, *.njk, *.html, *.liquid

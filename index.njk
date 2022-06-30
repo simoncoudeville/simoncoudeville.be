@@ -5,20 +5,38 @@ eleventyNavigation:
   order: 1
 ---
 
-<p>Hey there!</p>
-{% set maxPosts = collections.posts.length | min(3) %}
 <h1>
-  Latest
-  {% if maxPosts == 1 %}Post
-  {% else %}
-    {{ maxPosts }}
-    Posts
-  {% endif %}
+  Hi, My name is Simon
 </h1>
-{% set postslist = collections.posts | head(-3) %}
-{% set postslistCounter = collections.posts | length %}
-{% include "postslist.njk" %}
 <p>
-  More posts can be found in the
-  <a href="{{ '/posts/' | url }}">the archive</a>.
+  I’m a designer who likes to code. I specialise in responsive, accessible web-design, HTML & CSS,
+  Javascript, typography and animation. Currently I’m teaching these topics at
+  <a href="">MCT</a>
+  and
+  <a href="">Devine</a>.
 </p>
+<p>
+  I live in Bruges, Belgium together with my wife and two kids,
+  <a href="/ida">Ida</a>
+  &amp;
+  <a href="/sam">Sam</a>. Yes, I made a webpage for them.
+</p>
+<h2>
+  Now
+</h2>
+<ul>
+  <li>
+    Looking into new color profiles for the web such as Display-P3. Check out this codepen to see the
+    difference between RGB and Display-P3 .
+  </li>
+  <li>
+    Testing different static site generators such as 11ty and Zola to start a blog.
+  </li>
+  <li>
+    Experimenting with the feTurbulence SVG filter in CSS. Play with it on this
+        codepen.
+  </li>
+</ul>
+<h2>
+  Contact
+</h2>
