@@ -54,7 +54,8 @@ hr {
 	/* 1 */
 	color: inherit;
 	/* 2 */
-	margin: 1rem 0;
+	/* margin: 3rem 0; */
+	margin: 1.5rem 0;
 	/* 3 */
 	border: 0;
 	/* 4 */
@@ -248,46 +249,144 @@ summary {
 }
 
 /*
+Images
+======
+*/
+
+figure {
+	margin: 1.5rem 0;
+}
+
+img {
+	max-width: 100%;
+	display: block;
+}
+
+/*
+Fonts
+=====
+*/
+
+@font-face {
+	font-family: 'Graphik Web';
+	src: url('../fonts/Graphik-Regular-Web.woff') format('woff'),
+		url('../fonts/Graphik-Regular-Web.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Tiempos Text Web';
+	src: url('../fonts/TiemposTextWeb-Regular.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Tiempos Text Web';
+	src: url('../fonts/TiemposTextWeb-Semibold.woff') format('woff');
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Tiempos Text Web';
+	src: url('../fonts/TiemposTextWeb-Regularitalic.woff') format('woff');
+	font-weight: 400;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Tiempos Text Web';
+	src: url('../fonts/TiemposTextWeb-Semibolditalic.woff') format('woff');
+	font-weight: 700;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Tiempos Headline';
+	src: url('../fonts/TiemposHeadlineWeb-Bold.woff') format('woff');
+	font-weight: 700;
+	font-style: normal;
+}
+
+/*
 Variables
 =========
 */
 
 :root {
 	--global-color-alpha: slategray;
-	--global-color-alpha-hue: 210;
+	--global-color-alpha-hue: 210deg;
 	--global-color-alpha-saturation: 13%;
+
+	/* --global-color-beta: springgreen; */
+	/* --global-color-beta: mediumspringgreen; */
+	/* --global-color-beta: mediumseagreen; */
+	--global-color-beta: tomato;
+	/* --global-color-beta: indianred; */
+	/* --global-color-beta: dodgerblue; */
+	/* --global-color-beta: violet; */
+	/* --global-color-beta: hotpink; */
 
 	--global-neutral-hue: var(--global-color-alpha-hue);
 	--global-neutral-saturation: var(--global-color-alpha-saturation);
 
-	--global-color-neutral-100: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 95%);
-	--global-color-neutral-200: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 85%);
-	--global-color-neutral-300: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 70%);
-	--global-color-neutral-400: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 60%);
-	--global-color-neutral-500: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 45%);
+	--global-color-neutral-025: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 95%);
+	--global-color-neutral-050: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 87.5%);
+	--global-color-neutral-100: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 80%);
+	--global-color-neutral-200: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 70%);
+	--global-color-neutral-300: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 60%);
+	--global-color-neutral-400: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 50%);
+	--global-color-neutral-500: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 40%);
 	--global-color-neutral-600: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 30%);
 	--global-color-neutral-700: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 20%);
-	--global-color-neutral-800: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 15%);
+	--global-color-neutral-800: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 10%);
 	--global-color-neutral-900: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 5%);
 
-	--global-backgroundColor: var(--global-color-neutral-100);
-	/* --global-backgroundColor: var(--global-color-alpha); */
-	/* --global-text-color: var(--global-color-neutral-100); */
+	--global-backgroundColor: var(--global-color-neutral-025);
 	--global-text-color: var(--global-color-neutral-900);
 	--global-meta-color: var(--global-color-neutral-400);
+	--global-borderColor: var(--global-color-neutral-050);
+	/* --global-backgroundColor: var(--global-color-alpha);
+	--global-text-color: white;
+	--global-meta-color: var(--global-color-neutral-100);
+	--global-borderColor: var(--global-color-neutral-300); */
+
 	--global-link-color: var(--global-text-color);
-	--global-link-hover-color: var(--global-meta-color);
+	/* --global-link-underline-color: var(--global-meta-color); */
+	--global-link-underline-color: var(--global-color-beta);
+	--global-link-hover-color: var(--global-link-underline-color);
 	--global-selection-backgroundColor: var(--global-text-color);
 	--global-selection-color: var(--global-backgroundColor);
-	--global-borderColor: var(--global-color-neutral-400);
 
-	--global-font-family-alpha: "Suisse Int'l", sans-serif;
-	--global-font-family-beta: "Suisse Works", serif;
+
+	/* --global-font-family-alpha: "Graphik Web", sans-serif; */
+	/* --global-font-family-alpha: "DM Mono", sans-serif; */
+	--global-font-family-alpha: "Suisse Int'l Mono", monospace;
+	/* --global-font-family-alpha: "Suisse Int'l", sans-serif; */
+	/* --global-font-family-alpha: "Suisse Works", serif; */
 
 	/* --global-font-family-alpha: "Allrounder Grotesk"; */
-	/* --global-font-family-alpha: "Suisse Int'l", sans-serif; */
 	/* --global-font-family-alpha: "Newsreader", serif; */
-	--global-font-family-alpha: serif;
+	/* --global-font-family-alpha: georgia, serif; */
+	/* --global-font-family-alpha: "Martian mono", monospace; */
+	/* --global-font-family-alpha: "Sligoil Micro", monospace; */
+	/* --global-font-family-alpha: "Happy Times at the IKOB New Game Plus Edition", serif; */
+
+	--global-font-family-beta: "Tiempos Text Web", serif;
+	/* --global-font-family-beta: "Tiempos Headline", serif; */
+	/* --global-font-family-beta: "Calvino Grande", serif; */
+	/* --global-font-family-beta: "Suisse Works Trial", serif; */
+	/* --global-font-family-beta: "Suisse Works", serif; */
+	/* --global-font-family-beta: "Allrounder Antiqua Test", serif; */
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+	:root {
+		/* --global-color-alpha: color(display-p3 0.44 0.5 0.56); */
+		--global-color-beta: color(display-p3 1 0.4286 0.3199);
+	}
 }
 
 /*
@@ -296,30 +395,84 @@ Page
 */
 
 html {
-	font-size: calc(20 / 16 * 100%);
+	/* border-top: .25rem solid var(--global-color-beta); */
+	font-size: calc(16 / 16 * 100%);
 	line-height: 1.5;
 	background-color: var(--global-backgroundColor);
+	/* padding: 5vw; */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
 body {
+	--body-min-whitespace: 1.5rem;
+	--body-whitespace: max(var(--body-min-whitespace), 5vw);
 	color: var(--global-text-color);
-	margin: max(1.5rem, 5vw);
-	max-width: 30em;
+	padding: calc(var(--body-whitespace) - var(--body-min-whitespace)) var(--body-whitespace);
+	/* margin: 0 var(--body-min-whitespace); */
+	/* max-width: 60ch; */
 	font-family: var(--global-font-family-alpha);
+	/* font-family: var(--global-font-family-beta); */
 	font-feature-settings: "zero", "liga", "dlig", "lnum";
+	display: grid;
+	grid-template-rows: 1fr auto;
+	align-content: space-between;
+	/* min-height: 100vh; */
+	box-sizing: content-box;
+	min-height: calc(100vh - calc(var(--body-whitespace) - var(--body-min-whitespace)) * 2);
+}
+
+::selection {
+	background-color: var(--global-selection-backgroundColor);
+	color: var(--global-selection-color);
+}
+
+header {
+	/* display: flex; */
+	/* justify-content: space-between; */
+	min-height: calc(50vh - var(--body-whitespace));
+	position: sticky;
+	top: var(--body-whitespace);
+}
+
+header span {
+	display: block;
+	margin-top: 1.5rem;
+}
+
+main,
+footer {
+	/* max-width: 50ch; */
+	/* max-width: 33em;	 */
+	position: relative;
 }
 
 footer {
-	margin-top: 3rem;
+	/* margin-top: 3rem; */
 	color: var(--global-meta-color);
 }
 
-:any-link {
+a:any-link {
 	color: var(--global-link-color);
-	/* text-decoration-thickness: from-font; */
-	text-decoration-thickness: .06em;
+	text-decoration-thickness: from-font;
+	text-decoration-thickness: 1px;
+	text-underline-offset: .05em;
+	text-decoration-color: var(--global-link-underline-color);
+	font-family: var(--global-font-family-alpha);
+}
+
+a:hover {
+	color: var(--global-link-hover-color);
+}
+
+a:focus-visible {
+	color: var(--global-link-hover-color);
+	outline: 1px solid var(--global-link-underline-color);
+	outline-offset: .2em;
+	border-radius: 1px;
+	text-decoration: none;
+	/* outline: none; */
+	/* background-color: var(--global-link-underline-color); */
 }
 
 /*
@@ -340,18 +493,56 @@ ul {
 	margin: 1.5rem 0;
 }
 
-:is(h1, h2, h3, h4, h5, h6) {
+:is(h1, h2, h3, h4, h5, h6, em) {
+	/* font-family: "Tiempos Text", serif; */
+	/* font-family: "Tiempos Headline", serif; */
+	/* font-family: "Redaction", serif; */
+	/* font-style: normal; */
 	/* font-style: italic; */
+	/* font-family: serif; */
+	/* font-style: italic; */
+	/* font-weight: 600; */
+	/* font-weight: bold; */
+	/* color: var(--global-meta-color); */
+	/* font-family: var(--global-font-family-beta);
+	font-style: italic; */
 	/* font-weight: bolder; */
 	/* font-family: var(--global-font-family-alpha); */
 }
+
+/*
+h1,
+h1+p {
+	display: inline;
+} */
+
+h1 {
+	/* color: var(--global-color-beta); */
+	/* margin-bottom: 3rem; */
+	margin-bottom: 1.5rem;
+	/* font-size: 1.25rem; */
+}
+
+h2 {
+	/* font-size: 1.125rem; */
+}
+
+/* h1+p {
+	margin-top: 0;
+	color: var(--global-meta-color);
+} */
 
 *+h2 {
 	margin-top: 3rem;
 }
 
 ul {
+	/* list-style: none; */
 	padding: 0;
+}
+
+li {
+	position: relative;
 }
 
 li+li {
@@ -359,5 +550,134 @@ li+li {
 }
 
 ul li::marker {
-	content: "\002d\0020 ";
+	/* content: "\002d\0020 "; */
+	/* content: "- "; */
+	/* content: "◦ ";
+	font-weight: bold; */
+	/* content: "∙ "; */
+	/* content: "⋅ "; */
+	/* content: "⁃ "; */
+	/* content: "–  "; */
+	/* font-size: .75em; */
+	color: var(--global-color-beta);
+	/* color: var(--global-meta-color); */
+	/* color: var(--global-borderColor) */
+}
+
+/* ul li::before {
+	content: "";
+	display: block;
+	width: 5px;
+	height: 5px;
+	border-radius: 100%;
+	background-color: var(--global-color-beta);
+	position: absolute;
+	left: -.75em;
+	top: .75em;
+} */
+/*
+main {
+	margin-top: var(--body-min-whitespace);
+} */
+
+.main {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	align-items: end;
+	grid-gap: var(--body-whitespace);
+}
+
+.link-meta,
+.link-meta:any-link {
+	color: var(--global-meta-color);
+	text-decoration: none;
+	/* text-decoration-color: var(--global-meta-color); */
+}
+
+.mark {
+	margin-top: 3rem;
+}
+
+.avatar {
+	/* --c-avatar-dimension: calc(1.5rem * 6); */
+	--c-avatar-dimension: calc(1.5rem * 8);
+	--c-avatar-border: 1px;
+	--c-avatar-border-color: var(--global-borderColor);
+	position: relative;
+	width: var(--c-avatar-dimension);
+	border-radius: 0 0 var(--c-avatar-dimension) var(--c-avatar-dimension);
+	overflow: hidden;
+	position: sticky;
+	bottom: 3rem;
+	right: 0;
+}
+
+.avatar:before {
+	content: "";
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	/* height: var(--c-avatar-dimension); */
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	border-radius: 100%;
+	box-shadow: inset 0 0 0 var(--c-avatar-border) var(--c-avatar-border-color);
+}
+
+.avatar img {
+	display: block;
+	position: relative;
+	width: calc(var(--c-avatar-dimension));
+	margin-bottom: var(--c-avatar-border);
+	margin-left: var(--c-avatar-border);
+	margin-right: var(--c-avatar-border);
+	border-radius: 0 0 var(--c-avatar-dimension) var(--c-avatar-dimension);
+	filter: grayscale(100%) sepia(5%) hue-rotate(var(--global-color-alpha-hue)) contrast(120%);
+}
+
+.zdog-canvas {
+	display: block;
+	overflow: visible;
+	cursor: grab;
+	/* margin-bottom: 3rem; */
+	width: 50px;
+	height: 50px;
+}
+
+.zdog-canvas path {
+	/* stroke: darkslategrey; */
+	stroke-width: 100;
+	stroke: url("#gradientC");
+	/* opacity: .25; */
+}
+
+.mb-clear {
+	margin-bottom: 0;
+}
+
+.gradient-container {
+	height: 0;
+	width: 0;
+	position: absolute;
+
+}
+
+.gradient-stop-1 {
+	stop-color: tomato;
+	/* stop-color: indianred; */
+}
+
+.gradient-stop-2 {
+	stop-color: chartreuse;
+	stop-color: dodgerblue;
+	stop-color: lightblue;
+	stop-color: lightpink;
+	stop-color: lightseagreen;
+	stop-color: indigo;
+}
+
+.max-width-md {
+	max-width: 33em;
 }

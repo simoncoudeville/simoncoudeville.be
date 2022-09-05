@@ -9,14 +9,257 @@
     <link rel="stylesheet" href="{{ '/css/index.css' | url }}">
   </head>
   <body>
-    <main {% if templateclass %} class="{{ templateClass }}" {% endif %}>
-      {{ content | safe }}
+    <header>
+      {# <h1>{{ title or metadata.title }}</h1> #}
+      {#
+                                                                                                                                                                  <h1>
+                                                                                                                                                                    <svg
+                                                                                                                                                                      xmlns="http://www.w3.org/2000/svg"
+                                                                                                                                                                      width="33.942"
+                                                                                                                                                                      height="33.941"
+                                                                                                                                                                      viewbox="0 0 33.942 33.941">
+                                                                                                                                                                      <g
+                                                                                                                                                                        id="Group_53"
+                                                                                                                                                                        data-name="Group 53"
+                                                                                                                                                                        transform="translate(16.971 -4.243) rotate(45)">
+                                                                                                                                                                        <path
+                                                                                                                                                                          id="Union_2"
+                                                                                                                                                                          data-name="Union 2"
+                                                                                                                                                                          d="M-2698.5-401h-14a5.5,5.5,0,0,1-5.5-5.5,5.5,5.5,0,0,1,5.5-5.5h13a5.5,5.5,0,0,1,5.5,5.5v5.5h0v2.337A5.507,5.507,0,0,0-2698.5-401Z"
+                                                                                                                                                                          transform="translate(2721 415)"/>
+                                                                                                                                                                        <path
+                                                                                                                                                                          id="Union_3"
+                                                                                                                                                                          data-name="Union 3"
+                                                                                                                                                                          d="M-2712.5-398.662a5.5,5.5,0,0,1-5.5-5.5V-412a5.51,5.51,0,0,0,4.5,2.337h14a5.5,5.5,0,0,1,5.5,5.5,5.5,5.5,0,0,1-5.5,5.5Z"
+                                                                                                                                                                          transform="translate(2721 425.662)"/>
+                                                                                                                                                                      </g>
+                                                                                                                                                                    </svg>
+                                                                                                                                                                    <svg
+                                                                                                                                                                      xmlns="http://www.w3.org/2000/svg"
+                                                                                                                                                                      width="36.77"
+                                                                                                                                                                      height="36.77"
+                                                                                                                                                                      viewbox="0 0 36.77 36.77">
+                                                                                                                                                                      <defs>
+                                                                                                                                                                        <title>
+                                                                                                                                                                          Simon Coudeville
+                                                                                                                                                                        </title>
+                                                                                                                                                                        <style>
+                                                                                                                                                                          .cls-1 {
+                                                                                                                                                                            fill: none;
+                                                                                                                                                                            stroke: currentColor;
+                                                                                                                                                                            stroke-width: 2px;
+                                                                                                                                                                          }
+                                                                                                                                                                        </style>
+                                                                                                                                                                      </defs>
+                                                                                                                                                                      <g id="Group_54" data-name="Group 54" transform="translate(18.385) rotate(45)">
+                                                                                                                                                                        <path
+                                                                                                                                                                          id="Path_50"
+                                                                                                                                                                          data-name="Path 50"
+                                                                                                                                                                          class="cls-1"
+                                                                                                                                                                          d="M6,0H18a6,6,0,0,1,6,6V18a6,6,0,0,1-6,6H6a6,6,0,0,1-6-6V6A6,6,0,0,1,6,0Z"
+                                                                                                                                                                          transform="translate(1 1)"/>
+                                                                                                                                                                        <path
+                                                                                                                                                                          id="Path_47"
+                                                                                                                                                                          data-name="Path 47"
+                                                                                                                                                                          class="cls-1"
+                                                                                                                                                                          d="M0,0A6,6,0,0,1,6,6"
+                                                                                                                                                                          transform="translate(7 13) rotate(180)"/>
+                                                                                                                                                                        <path
+                                                                                                                                                                          id="Path_48"
+                                                                                                                                                                          data-name="Path 48"
+                                                                                                                                                                          class="cls-1"
+                                                                                                                                                                          d="M0,0A6,6,0,0,1,6,6"
+                                                                                                                                                                          transform="translate(19 13)"/>
+                                                                                                                                                                        <line
+                                                                                                                                                                          id="Line_1"
+                                                                                                                                                                          data-name="Line 1"
+                                                                                                                                                                          class="cls-1"
+                                                                                                                                                                          x2="12"
+                                                                                                                                                                          transform="translate(7 13)"/>
+                                                                                                                                                                      </g>
+                                                                                                                                                                    </svg>
+                                                                                                                                                                  </h1>
+                                                                                                                                                                  #}
+        <h1>
+          <svg class="zdog-canvas" width="200" height="200"> <defs>
+            <title>Simon Coudeville</title>
+          </defs>
+        </svg>
+      </h1>
+    </header>
+    <main class="main">
+      <div class="max-width-md">
+        {{ content | safe }}
+      </div>
+      {# <figure class="avatar">
+                                                                                                                                      <img src="/img/test-avatar-3.png" alt="Avatar"/>
+                                                                                                                                    </figure> #}
     </main>
-    <footer>
+    <hr>
+    <footer class="max-width-md">
       <p>
-        This page was last updated {{ generated }}
-        {# Friday, November 26, 2021. #}
+        {# This website was created with Eleventy.  #}
+        Last updated {{ generated }}. Next time you visit this website it might look
+        different. Or not, I don't know.
       </p>
+      {# <p class="mark" aria-hidden="true">
+                                                                                                                                                                    S&#x0306;
+                                                                                                                                                                  </p> #}
     </footer>
+    <svg class="gradient-container">
+      <defs>
+        <linearGradient
+          id="gradientC"
+          gradienttransform="scale(1.5)"
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="50%"
+          spreadmethod="pad">
+          <stop class="gradient-stop-1" offset="0%" stop-color="tomato"/>
+          <stop class="gradient-stop-2" offset="100%" stop-color="crimson"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    <script src="https://unpkg.com/zdog@1/dist/zdog.dist.min.js"></script>
+    <script>
+      // create illo
+      let illo = new Zdog.Illustration({ // set canvas with selector
+        element: '.zdog-canvas',
+        dragRotate: true
+      });
+      new Zdog.Shape({
+        addTo: illo,
+        path: [
+          {
+            x: 0,
+            y: -100,
+            z: 100
+          },
+          {
+            arc: [
+              {
+                x: -100,
+                y: -100,
+                z: 100
+              }, {
+                x: -100,
+                y: -100,
+                z: 0
+              }
+            ]
+          },
+          {
+            arc: [
+              {
+                x: -100,
+                y: -100,
+                z: -100
+              }, {
+                x: 0,
+                y: -100,
+                z: -100
+              }
+            ]
+          },
+          {
+            arc: [
+              {
+                x: 100,
+                y: -100,
+                z: -100
+              }, {
+                x: 100,
+                y: 0,
+                z: -100
+              }
+            ]
+          }, {
+            arc: [
+              {
+                x: 100,
+                y: 100,
+                z: -100
+              }, {
+                x: 0,
+                y: 100,
+                z: -100
+              }
+            ]
+          }, {
+            arc: [
+              {
+                x: -100,
+                y: 100,
+                z: -100
+              }, {
+                x: -100,
+                y: 100,
+                z: 0
+              }
+            ]
+          }, {
+            arc: [
+              {
+                x: -100,
+                y: 100,
+                z: 100
+              }, {
+                x: 0,
+                y: 100,
+                z: 100
+              }
+            ]
+          }, {
+            arc: [
+              {
+                x: 100,
+                y: 100,
+                z: 100
+              }, {
+                x: 100,
+                y: 0,
+                z: 100
+              }
+            ]
+          }, {
+            arc: [
+              {
+                x: 100,
+                y: -100,
+                z: 100
+              }, {
+                x: 0,
+                y: -100,
+                z: 100
+              }
+            ]
+          }
+        ],
+        closed: false
+      });
+      // rotate illo
+      illo.rotate.x = -0.5;
+      illo.rotate.y = -0.5;
+      illo.rotate.z = -0.5;
+      // update & render
+      illo.updateRenderGraph();
+      function animate() {
+        illo.rotate.x += 0.003;
+        illo.rotate.y += 0.004;
+        illo.rotate.z += 0.005;
+        illo.updateRenderGraph();
+        requestAnimationFrame(animate);
+      }
+      animate();
+      // speed up the animation on scroll
+      window.addEventListener('scroll', function () {
+        let speed = window.scrollY / 5000;
+        illo.rotate.y += speed;
+        illo.rotate.z += speed;
+        illo.rotate.x += speed;
+        illo.updateRenderGraph();
+      });
+    </script>
   </body>
 </html>
