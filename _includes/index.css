@@ -218,7 +218,7 @@ Page
 */
 
 html {
-	font-size: calc(16 / 16 * 100%);
+	/* font-size: calc(17 / 16 * 100%); */
 	line-height: 1.5;
 	background-color: var(--global-backgroundColor);
 	-webkit-font-smoothing: antialiased;
