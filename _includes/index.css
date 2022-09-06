@@ -333,13 +333,10 @@ h1:has(+p) {
 	display: inline;
 }
 
+/*
 main p:first-of-type {
-	/* font-size: 1.25rem;
-	line-height: 1.4; */
-	/* font-family: var(--global-font-family-beta); */
-	/* font-family: "Redaction 35";
-	font-weight: bold; */
-}
+	font-size: 1.25rem;
+} */
 
 .header {
 	min-height: calc(33vh - var(--body-whitespace));
@@ -349,15 +346,19 @@ main p:first-of-type {
 	/* margin-bottom: calc(var(--body-whitespace) * 2); */
 }
 
-.zdog-canvas {
+.zdog-logo {
 	display: block;
 	overflow: visible;
 	cursor: grab;
 	width: 50px;
 	height: 50px;
+	position: relative;
+	top: 1rem;
+	left: 1rem;
+	/* margin: 1.5rem; */
 }
 
-.zdog-canvas path {
+.zdog-logo path {
 	stroke-width: 100;
 	stroke: url("#gradient");
 }

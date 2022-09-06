@@ -1,10 +1,10 @@
-// create illo
-let illo = new Zdog.Illustration({ // set canvas with selector
-    element: '.zdog-canvas',
+// create logo
+let logo = new Zdog.Illustration({ // set canvas with selector
+    element: '.zdog-logo',
     dragRotate: true
 });
 new Zdog.Shape({
-    addTo: illo,
+    addTo: logo,
     path: [
         {
             x: 0,
@@ -113,20 +113,20 @@ new Zdog.Shape({
     ],
     closed: false
 });
-illo.updateRenderGraph();
+logo.updateRenderGraph();
 function animate() {
-    illo.rotate.x += 0.003;
-    illo.rotate.y += 0.006;
-    illo.rotate.z += 0.009;
-    illo.updateRenderGraph();
+    logo.rotate.x += 0.003;
+    logo.rotate.y += 0.006;
+    logo.rotate.z += 0.009;
+    logo.updateRenderGraph();
     requestAnimationFrame(animate);
 }
 animate();
 // speed up the animation on scroll
 window.addEventListener('scroll', function () {
     let speed = window.scrollY / 5000;
-    illo.rotate.y += speed;
-    illo.rotate.z += speed;
-    illo.rotate.x += speed;
-    illo.updateRenderGraph();
+    logo.rotate.y += speed;
+    logo.rotate.z += speed;
+    logo.rotate.x += speed;
+    logo.updateRenderGraph();
 });
