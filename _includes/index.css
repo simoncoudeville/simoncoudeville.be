@@ -1,0 +1,385 @@
+/*! modern-normalize v1.1.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
+
+/*
+Document
+========
+*/
+
+/**
+Use a better box model (opinionated).
+*/
+
+*,
+::before,
+::after {
+	box-sizing: border-box;
+}
+
+/**
+1. Prevent adjustments of font size after orientation changes in iOS.
+*/
+
+html {
+	-webkit-text-size-adjust: 100%;
+	/* 1 */
+}
+
+/*
+Sections
+========
+*/
+
+/**
+Remove the margin in all browsers.
+*/
+
+body {
+	margin: 0;
+}
+
+/*
+Grouping content
+================
+*/
+
+/**
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Add a correct margin
+4. Remove the border
+*/
+
+hr {
+	height: 1px;
+	/* 1 */
+	color: inherit;
+	/* 2 */
+	margin: 3rem 0;
+	/* 3 */
+	border: 0;
+	/* 4 */
+	background-color: var(--global-borderColor);
+}
+
+/*
+Images
+======
+*/
+
+figure {
+	margin: 1.5rem 0;
+}
+
+img {
+	max-width: 100%;
+	display: block;
+}
+
+/*
+Fonts
+=====
+*/
+
+@font-face {
+	font-family: 'Graphik Web';
+	src: url('../fonts/Graphik-Regular-Web.woff') format('woff'),
+		url('../fonts/Graphik-Regular-Web.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+}
+
+/* @font-face {
+	font-family: 'Tiempos Text Web';
+	src: url('../fonts/TiemposTextWeb-Regular.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Tiempos Text Web';
+	src: url('../fonts/TiemposTextWeb-Semibold.woff') format('woff');
+	font-weight: 700;
+	font-style: normal;
+} */
+
+@font-face {
+	font-family: 'Tiempos Text Web';
+	src: url('../fonts/TiemposTextWeb-Regularitalic.woff') format('woff');
+	font-weight: 400;
+	font-style: italic;
+}
+
+/* @font-face {
+	font-family: 'Tiempos Text Web';
+	src: url('../fonts/TiemposTextWeb-Semibolditalic.woff') format('woff');
+	font-weight: 700;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Tiempos Headline';
+	src: url('../fonts/TiemposHeadlineWeb-Bold.woff') format('woff');
+	font-weight: 700;
+	font-style: normal;
+} */
+
+/*
+Variables
+=========
+*/
+
+:root {
+	--global-color-alpha: indigo;
+	--global-color-alpha-hue: 275deg;
+	--global-color-alpha-saturation: 100%;
+
+	--global-color-beta: tomato;
+
+	--global-neutral-hue: var(--global-color-alpha-hue);
+	--global-neutral-saturation: 5%;
+
+	--global-color-neutral-025: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 95%);
+	--global-color-neutral-050: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 87.5%);
+	--global-color-neutral-100: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 80%);
+	--global-color-neutral-200: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 70%);
+	--global-color-neutral-300: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 60%);
+	--global-color-neutral-400: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 50%);
+	--global-color-neutral-500: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 44%);
+	--global-color-neutral-600: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 30%);
+	--global-color-neutral-700: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 20%);
+	--global-color-neutral-800: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 10%);
+	--global-color-neutral-900: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 5%);
+
+	--global-backgroundColor: var(--global-color-neutral-025);
+	--global-text-color: var(--global-color-neutral-900);
+	--global-meta-color: var(--global-color-neutral-500);
+	--global-borderColor: var(--global-color-neutral-050);
+
+	--global-link-color: var(--global-text-color);
+	/* --global-link-color: var(--global-color-alpha); */
+	/* --global-link-underline-color: var(--global-link-color); */
+	/* --global-link-underline-color: var(--global-color-beta); */
+	--global-link-underline-color: var(--global-meta-color);
+	--global-link-hover-color: var(--global-link-underline-color);
+	/* --global-link-hover-color: var(--global-color-beta); */
+	--global-selection-backgroundColor: var(--global-text-color);
+	--global-selection-color: var(--global-backgroundColor);
+
+
+	--global-font-family-alpha: "Graphik Web", sans-serif;
+	/* --global-font-family-alpha: "Space Grotesk", sans-serif; */
+	/* --global-font-family-alpha: "Neue Machina", sans-serif; */
+	/* --global-font-family-alpha: "inter", sans-serif; */
+	/* --global-font-family-alpha: "Planc", sans-serif; */
+	/* --global-font-family-alpha: "N27", sans-serif; */
+	/* --global-font-family-alpha: "Office Times Sharp Mono", sans-serif; */
+	/* --global-font-family-alpha: "DM Mono", sans-serif; */
+	/* --global-font-family-alpha: "Suisse Int'l Mono", monospace; */
+	/* --global-font-family-alpha: "Suisse Int'l", sans-serif; */
+	/* --global-font-family-alpha: "Suisse Works", serif; */
+	/* --global-font-family-alpha: "Tiempos Text Web", serif; */
+
+	/* --global-font-family-alpha: "Allrounder Grotesk"; */
+	/* --global-font-family-alpha: "Newsreader", serif; */
+	/* --global-font-family-alpha: georgia, serif; */
+	/* --global-font-family-alpha: "Martian mono", monospace; */
+	/* --global-font-family-alpha: "Sligoil Micro", monospace; */
+
+	--global-font-family-beta: "Tiempos Text Web", serif;
+	/* --global-font-family-beta: "Tiempos Headline", serif; */
+	/* --global-font-family-beta: "Calvino Grande", serif; */
+	/* --global-font-family-beta: "Suisse Works Trial", serif; */
+	/* --global-font-family-beta: "Suisse Works", serif; */
+	/* --global-font-family-beta: "Allrounder Antiqua Test", serif; */
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+	:root {
+		--global-color-alpha: color(display-p3 0.2668 0 0.4895);
+		--global-color-beta: color(display-p3 1 0.4286 0.3199);
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--global-backgroundColor: var(--global-color-neutral-800);
+		--global-text-color: var(--global-color-neutral-025);
+		/* --global-link-color: hsl(var(--global-color-alpha-hue), 50%, 65%); */
+		/* --global-link-color: var(--global-text-color); */
+		--global-borderColor: var(--global-color-neutral-700);
+
+		--global-link-underline-color: var(--global-color-neutral-300);
+	}
+}
+
+/*
+Page
+====
+*/
+
+html {
+	font-size: calc(16 / 16 * 100%);
+	line-height: 1.5;
+	background-color: var(--global-backgroundColor);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	--body-min-whitespace: 1.5rem;
+	--body-whitespace: max(var(--body-min-whitespace), 5vw);
+	color: var(--global-text-color);
+	padding: calc(var(--body-whitespace) - var(--body-min-whitespace)) var(--body-whitespace);
+	font-family: var(--global-font-family-alpha);
+	/* font-family: var(--global-font-family-beta); */
+	font-feature-settings: "zero", "liga", "dlig", "lnum";
+	/* font-feature-settings: "zero", "liga", "dlig", "lnum", "salt"; */
+}
+
+::selection {
+	background-color: var(--global-selection-backgroundColor);
+	color: var(--global-selection-color);
+}
+
+main,
+footer {
+	position: relative;
+}
+
+footer {
+	color: var(--global-meta-color);
+}
+
+a:any-link {
+	color: var(--global-link-color);
+	/* text-decoration-thickness: from-font; */
+	text-decoration-thickness: 1px;
+	text-underline-offset: .05em;
+	text-decoration-color: var(--global-link-underline-color);
+	transition: all .1s ease;
+}
+
+a:hover {
+	color: var(--global-link-hover-color);
+	text-decoration-color: var(--global-link-hover-underline-color);
+}
+
+a:focus-visible {
+	color: var(--global-link-hover-color);
+	outline: 1px solid var(--global-link-underline-color);
+	outline-offset: .2em;
+	border-radius: 1px;
+	text-decoration: none;
+}
+
+/*
+Typography
+==========
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul {
+	font-size: 1rem;
+	font-weight: inherit;
+	margin: 1.5rem 0;
+}
+
+:is(h1, h2, h3, h4, h5, h6, em) {
+	/* font-family: "Tiempos Text", serif; */
+	/* font-family: "Tiempos Headline", serif; */
+	/* font-family: "Redaction", serif; */
+	/* font-style: normal; */
+	/* font-style: italic; */
+	/* font-family: serif; */
+	/* font-style: italic; */
+	/* font-weight: 600; */
+	/* font-weight: bold; */
+	/* color: var(--global-meta-color); */
+	font-family: var(--global-font-family-beta);
+	font-style: italic;
+	/* font-weight: bolder; */
+	/* font-family: var(--global-font-family-alpha); */
+	/* font-size: 1.25rem; */
+}
+
+*+h2 {
+	margin-top: 3rem;
+}
+
+ul {
+	padding: 0;
+}
+
+li {
+	position: relative;
+}
+
+li+li {
+	margin-top: 0.75rem;
+}
+
+ul li::marker {
+	color: var(--global-color-beta);
+}
+
+h1+p,
+h1:has(+p) {
+	display: inline;
+}
+
+main p:first-of-type {
+	/* font-size: 1.25rem;
+	line-height: 1.4; */
+	/* font-family: var(--global-font-family-beta); */
+	/* font-family: "Redaction 35";
+	font-weight: bold; */
+}
+
+.header {
+	min-height: calc(33vh - var(--body-whitespace));
+	position: sticky;
+	top: var(--body-whitespace);
+	margin-bottom: 1.5rem;
+	/* margin-bottom: calc(var(--body-whitespace) * 2); */
+}
+
+.zdog-canvas {
+	display: block;
+	overflow: visible;
+	cursor: grab;
+	width: 50px;
+	height: 50px;
+}
+
+.zdog-canvas path {
+	stroke-width: 100;
+	stroke: url("#gradient");
+}
+
+.gradient-container {
+	height: 0;
+	width: 0;
+	position: absolute;
+}
+
+.gradient-stop-1 {
+	stop-color: var(--global-color-beta);
+}
+
+.gradient-stop-2 {
+	stop-color: var(--global-color-alpha);
+}
+
+.mb-clear {
+	margin-bottom: 0;
+}
+
+.max-width-md {
+	max-width: 33em;
+}

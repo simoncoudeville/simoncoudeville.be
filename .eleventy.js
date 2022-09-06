@@ -11,8 +11,12 @@ const pluginNavigation = require("@11ty/eleventy-navigation");
 module.exports = function (eleventyConfig) {
   // Copy the `img` and `css` folders to the output
   eleventyConfig.addPassthroughCopy("img");
-  eleventyConfig.addPassthroughCopy("css");
+  // eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("fonts");
+  eleventyConfig.addPassthroughCopy({ "img/favicon": "/" });
+  eleventyConfig.addPassthroughCopy({
+    "./node_modules/zdog/dist/zdog.dist.min.js": "/js/zdog.dist.min.js",
+  });
 
   // Add plugins
   eleventyConfig.addPlugin(pluginRss);
@@ -27,6 +31,29 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {
     return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('yyyy-LL-dd');
   });
+
+  const { minify } = require("terser");
+
+  eleventyConfig.addNunjucksAsyncFilter("jsmin", async function (
+    code,
+    callback
+  ) {
+    try {
+      const minified = await minify(code);
+      callback(null, minified.code);
+    } catch (err) {
+      console.error("Terser error: ", err);
+      // Fail gracefully.
+      callback(null, code);
+    }
+  });
+
+  const CleanCSS = require("clean-css");
+  // module.exports = function (eleventyConfig) {
+  eleventyConfig.addFilter("cssmin", function (code) {
+    return new CleanCSS({}).minify(code).styles;
+  });
+  // };
 
   // Get the first `n` elements of a collection.
   eleventyConfig.addFilter("head", (array, n) => {
