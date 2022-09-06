@@ -115,9 +115,9 @@ new Zdog.Shape({
 });
 logo.updateRenderGraph();
 function animate() {
-    logo.rotate.x += 0.003;
-    logo.rotate.y += 0.006;
-    logo.rotate.z += 0.009;
+    logo.rotate.x += 0.006;
+    logo.rotate.y += 0.009;
+    // logo.rotate.z += 0.01;
     logo.updateRenderGraph();
     requestAnimationFrame(animate);
 }
