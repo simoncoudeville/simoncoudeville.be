@@ -151,11 +151,13 @@ Variables
 	--global-color-neutral-900: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 5%);
 
 	--global-backgroundColor: var(--global-color-neutral-025);
-	--global-text-color: var(--global-color-neutral-900);
+	--global-text-color: var(--global-color-neutral-800);
+	--global-highlight-color: var(--global-color-neutral-800);
 	--global-meta-color: var(--global-color-neutral-500);
 	--global-borderColor: var(--global-color-neutral-050);
 
 	--global-link-color: var(--global-text-color);
+	--global-link-color: var(--global-highlight-color);
 	/* --global-link-color: var(--global-color-alpha); */
 	/* --global-link-underline-color: var(--global-link-color); */
 	/* --global-link-underline-color: var(--global-color-beta); */
@@ -203,7 +205,8 @@ Variables
 @media (prefers-color-scheme: dark) {
 	:root {
 		--global-backgroundColor: var(--global-color-neutral-800);
-		--global-text-color: var(--global-color-neutral-025);
+		--global-text-color: var(--global-color-neutral-050);
+		--global-highlight-color: var(--global-color-neutral-050);
 		/* --global-link-color: hsl(var(--global-color-alpha-hue), 50%, 65%); */
 		/* --global-link-color: var(--global-text-color); */
 		--global-borderColor: var(--global-color-neutral-700);
@@ -218,7 +221,7 @@ Page
 */
 
 html {
-	/* font-size: calc(17 / 16 * 100%); */
+	font-size: calc(17 / 16 * 100%);
 	line-height: 1.5;
 	background-color: var(--global-backgroundColor);
 	-webkit-font-smoothing: antialiased;
@@ -247,6 +250,7 @@ footer {
 }
 
 footer {
+	font-family: var(--global-font-family-beta);
 	color: var(--global-meta-color);
 }
 
@@ -291,21 +295,9 @@ ul {
 }
 
 :is(h1, h2, h3, h4, h5, h6, em) {
-	/* font-family: "Tiempos Text", serif; */
-	/* font-family: "Tiempos Headline", serif; */
-	/* font-family: "Redaction", serif; */
-	/* font-style: normal; */
-	/* font-style: italic; */
-	/* font-family: serif; */
-	/* font-style: italic; */
-	/* font-weight: 600; */
-	/* font-weight: bold; */
-	/* color: var(--global-meta-color); */
 	font-family: var(--global-font-family-beta);
 	font-style: italic;
-	/* font-weight: bolder; */
-	/* font-family: var(--global-font-family-alpha); */
-	/* font-size: 1.25rem; */
+	color: var(--global-highlight-color);
 }
 
 *+h2 {
@@ -329,20 +321,20 @@ ul li::marker {
 }
 
 h1+p,
-h1:has(+p) {
+h1:has(+p),
+.intro-title,
+.intro-text {
 	display: inline;
 }
 
-/*
-main p:first-of-type {
-	font-size: 1.25rem;
-} */
-
 .header {
-	min-height: calc(33vh - var(--body-whitespace));
+	/* min-height: calc(50vh - var(--body-whitespace)); */
 	position: sticky;
 	top: var(--body-whitespace);
-	margin-bottom: 1.5rem;
+	margin: 1.5rem 0 5rem;
+	/* margin-bottom: 3rem; */
+	/* margin-bottom: 20vh; */
+	/* margin-bottom: 1.5rem; */
 	/* margin-bottom: calc(var(--body-whitespace) * 2); */
 }
 
@@ -350,12 +342,8 @@ main p:first-of-type {
 	display: block;
 	overflow: visible;
 	cursor: grab;
-	width: 3.25rem;
-	height: 3.25rem;
-	position: relative;
-	top: 1rem;
-	left: 1rem;
-	/* margin: 1.5rem; */
+	width: 5rem;
+	height: 5rem;
 }
 
 .zdog-logo path {
