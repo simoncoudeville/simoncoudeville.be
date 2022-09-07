@@ -1,8 +1,9 @@
 // create logo
-let logo = new Zdog.Illustration({ // set canvas with selector
+let logo = new Zdog.Illustration({
     element: '.zdog-logo',
     dragRotate: true
 });
+
 new Zdog.Shape({
     addTo: logo,
     path: [
@@ -113,16 +114,20 @@ new Zdog.Shape({
     ],
     closed: false
 });
+
 logo.rotate.x = 0.77;
 logo.rotate.y = 0.25;
 logo.updateRenderGraph();
+
 function animate() {
     logo.rotate.x += 0.006;
     logo.rotate.y += 0.009;
     logo.updateRenderGraph();
     requestAnimationFrame(animate);
 }
+
 animate();
+
 // speed up the animation on scroll
 window.addEventListener('scroll', function () {
     let speed = window.scrollY / 5000;

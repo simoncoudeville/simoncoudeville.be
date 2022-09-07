@@ -154,9 +154,10 @@ Variables
 	--global-text-color: var(--global-color-neutral-800);
 	--global-highlight-color: var(--global-color-neutral-800);
 	--global-meta-color: var(--global-color-neutral-500);
+	--global-muted-color: var(--global-color-neutral-300);
 	--global-borderColor: var(--global-color-neutral-050);
 
-	--global-link-color: var(--global-text-color);
+	/* --global-link-color: var(--global-text-color); */
 	--global-link-color: var(--global-highlight-color);
 	/* --global-link-color: var(--global-color-alpha); */
 	/* --global-link-underline-color: var(--global-link-color); */
@@ -205,7 +206,7 @@ Variables
 @media (prefers-color-scheme: dark) {
 	:root {
 		--global-backgroundColor: var(--global-color-neutral-800);
-		--global-text-color: var(--global-color-neutral-100);
+		--global-text-color: var(--global-color-neutral-025);
 		--global-highlight-color: var(--global-color-neutral-025);
 		/* --global-link-color: hsl(var(--global-color-alpha-hue), 50%, 65%); */
 		/* --global-link-color: var(--global-text-color); */
@@ -230,13 +231,22 @@ html {
 
 body {
 	--body-min-whitespace: 1.5rem;
-	--body-whitespace: max(var(--body-min-whitespace), 10vw);
+	--body-max-whitespace: 1.5rem;
+	--body-whitespace: max(var(--body-min-whitespace), var(--body-max-whitespace));
 	color: var(--global-text-color);
 	padding: calc(var(--body-whitespace) - var(--body-min-whitespace)) var(--body-whitespace);
 	font-family: var(--global-font-family-alpha);
 	/* font-family: var(--global-font-family-beta); */
 	font-feature-settings: "zero", "liga", "dlig", "lnum";
 	/* font-feature-settings: "zero", "liga", "dlig", "lnum", "salt"; */
+}
+
+@media (min-width: 41em) {
+	body {
+		--body-max-whitespace: 10vw;
+	}
+}
+
 }
 
 ::selection {
@@ -369,6 +379,18 @@ h1:has(+p),
 
 .gradient-stop-2 {
 	stop-color: var(--global-color-alpha);
+}
+
+.color-meta {
+	color: var(--global-meta-color);
+}
+
+.color-border {
+	color: var(--global-borderColor);
+}
+
+.color-muted {
+	color: var(--global-muted-color);
 }
 
 .mb-clear {
