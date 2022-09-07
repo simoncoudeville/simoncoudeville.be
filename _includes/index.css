@@ -230,7 +230,7 @@ html {
 
 body {
 	--body-min-whitespace: 1.5rem;
-	--body-whitespace: max(var(--body-min-whitespace), 5vw);
+	--body-whitespace: max(var(--body-min-whitespace), 10vw);
 	color: var(--global-text-color);
 	padding: calc(var(--body-whitespace) - var(--body-min-whitespace)) var(--body-whitespace);
 	font-family: var(--global-font-family-alpha);
