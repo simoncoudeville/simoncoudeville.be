@@ -205,8 +205,8 @@ Variables
 @media (prefers-color-scheme: dark) {
 	:root {
 		--global-backgroundColor: var(--global-color-neutral-800);
-		--global-text-color: var(--global-color-neutral-050);
-		--global-highlight-color: var(--global-color-neutral-050);
+		--global-text-color: var(--global-color-neutral-100);
+		--global-highlight-color: var(--global-color-neutral-025);
 		/* --global-link-color: hsl(var(--global-color-alpha-hue), 50%, 65%); */
 		/* --global-link-color: var(--global-text-color); */
 		--global-borderColor: var(--global-color-neutral-700);
@@ -250,7 +250,7 @@ footer {
 }
 
 footer {
-	font-family: var(--global-font-family-beta);
+	/* font-family: var(--global-font-family-beta); */
 	color: var(--global-meta-color);
 }
 
@@ -328,14 +328,20 @@ h1:has(+p),
 }
 
 .header {
-	/* min-height: calc(50vh - var(--body-whitespace)); */
+	min-height: calc(50vh - var(--body-whitespace) - 1.5rem);
 	position: sticky;
 	top: var(--body-whitespace);
-	margin: 1.5rem 0 5rem;
+	margin: 1.5rem 0;
+	/* margin: 1.5rem 0 5rem; */
 	/* margin-bottom: 3rem; */
 	/* margin-bottom: 20vh; */
 	/* margin-bottom: 1.5rem; */
 	/* margin-bottom: calc(var(--body-whitespace) * 2); */
+	/* margin-bottom: max(3rem, 10vh); */
+}
+
+.intro {
+	margin: 1.5rem 0;
 }
 
 .zdog-logo {
