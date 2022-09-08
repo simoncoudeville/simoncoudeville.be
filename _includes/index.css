@@ -338,7 +338,8 @@ h1:has(+p),
 }
 
 .header {
-	min-height: calc(50vh - var(--body-whitespace) - 1.5rem);
+	--header-vheight: 50vh;
+	min-height: calc(var(--header-vheight) - var(--body-whitespace) - 1.5rem);
 	position: sticky;
 	top: var(--body-whitespace);
 	margin: 1.5rem 0;
@@ -348,6 +349,12 @@ h1:has(+p),
 	/* margin-bottom: 1.5rem; */
 	/* margin-bottom: calc(var(--body-whitespace) * 2); */
 	/* margin-bottom: max(3rem, 10vh); */
+}
+
+@supports(height: 100svh) {
+	.header {
+		--header-vheight: 50svh;
+	}
 }
 
 .intro {
