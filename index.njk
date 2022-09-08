@@ -6,9 +6,7 @@ eleventyNavigation:
 ---
 
 <header class="intro">
-  <h1
-    class="intro-title">
-    {# Hi, my name is Simon, #}
+  <h1 class="intro-title">
     I'm Simon Coudeville
   </h1>
   <p class="intro-text">
@@ -18,13 +16,32 @@ eleventyNavigation:
     and
     <a href="https://www.devine.be/">Devine</a>.
   </p>
+  {# <p>
+                <a class="link-more" href="#more">
+                  Read more
+                </a>
+              </p>
+              #}
 </header>
 {# <p>
-  I live in Bruges, Belgium together with my wife and two kids,
+  I've been writing CSS since the beginning and it has become my main tool to
+  create I live in Bruges, Belgium together with my wife and two kids,
   <a href="/ida">Ida</a>
   &amp;
   <a href="/sam">Sam</a>. Yes, I made a webpage for them.
 </p> #}
+{% set maxPosts = collections.posts.length | min(3) %}
+<h2>Latest blog
+  {% if maxPosts == 1 %}post
+  {% else %}
+    {{ maxPosts }} posts{% endif %}
+</h2>
+{% set postslist = collections.posts | head(-3) %}
+{% set postslistCounter = collections.posts | length %}
+{% include "postslist.njk" %}
+<p>More posts can be found in
+  <a href="{{ '/posts/' | url }}">the archive</a>.
+</p>
 <h2>
   Latest
 </h2>
@@ -33,7 +50,7 @@ eleventyNavigation:
     Rediscovered
     <a href="https://zzz.dog/">zdog</a>, a pseudo-3D engine for the web. Check out
     <a href="https://codepen.io/simoncoudeville/pen/NWMqPeQ">this codepen</a>
-    to see how I made an animated logo.
+    to see how I made my logo animation.
   </li>
   <li>
     Launched the

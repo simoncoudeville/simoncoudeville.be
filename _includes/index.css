@@ -29,14 +29,6 @@ Sections
 ========
 */
 
-/**
-Remove the margin in all browsers.
-*/
-
-body {
-	margin: 0;
-}
-
 /*
 Grouping content
 ================
@@ -82,43 +74,45 @@ Fonts
 
 @font-face {
 	font-family: 'Graphik Web';
-	src: url('../fonts/Graphik-Regular-Web.woff') format('woff'),
-		url('../fonts/Graphik-Regular-Web.woff2') format('woff2');
-	font-weight: 400;
-	font-style: normal;
-}
-
-/* @font-face {
-	font-family: 'Tiempos Text Web';
-	src: url('../fonts/TiemposTextWeb-Regular.woff') format('woff');
+	src: url('/fonts/Graphik-Regular-Web.woff') format('woff'),
+		url('/fonts/Graphik-Regular-Web.woff2') format('woff2');
 	font-weight: 400;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'Tiempos Text Web';
-	src: url('../fonts/TiemposTextWeb-Semibold.woff') format('woff');
-	font-weight: 700;
+	src: url('/fonts/TiemposTextWeb-Regular.woff') format('woff');
+	font-weight: 400;
 	font-style: normal;
-} */
+}
+
 
 @font-face {
 	font-family: 'Tiempos Text Web';
-	src: url('../fonts/TiemposTextWeb-Regularitalic.woff') format('woff');
+	src: url('/fonts/TiemposTextWeb-Semibold.woff') format('woff');
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Tiempos Text Web';
+	src: url('/fonts/TiemposTextWeb-Regularitalic.woff') format('woff');
 	font-weight: 400;
 	font-style: italic;
 }
 
-/* @font-face {
+@font-face {
 	font-family: 'Tiempos Text Web';
-	src: url('../fonts/TiemposTextWeb-Semibolditalic.woff') format('woff');
+	src: url('/fonts/TiemposTextWeb-Semibolditalic.woff') format('woff');
 	font-weight: 700;
 	font-style: italic;
 }
 
+/*
 @font-face {
 	font-family: 'Tiempos Headline';
-	src: url('../fonts/TiemposHeadlineWeb-Bold.woff') format('woff');
+	src: url('/fonts/TiemposHeadlineWeb-Bold.woff') format('woff');
 	font-weight: 700;
 	font-style: normal;
 } */
@@ -156,6 +150,7 @@ Variables
 	--global-meta-color: var(--global-color-neutral-500);
 	--global-muted-color: var(--global-color-neutral-300);
 	--global-borderColor: var(--global-color-neutral-050);
+	--global-borderColor2: var(--global-color-neutral-100);
 
 	/* --global-link-color: var(--global-text-color); */
 	--global-link-color: var(--global-highlight-color);
@@ -211,6 +206,7 @@ Variables
 		/* --global-link-color: hsl(var(--global-color-alpha-hue), 50%, 65%); */
 		/* --global-link-color: var(--global-text-color); */
 		--global-borderColor: var(--global-color-neutral-700);
+		--global-borderColor2: var(--global-color-neutral-600);
 
 		--global-link-underline-color: var(--global-color-neutral-300);
 	}
@@ -234,6 +230,7 @@ body {
 	--body-max-whitespace: 1.5rem;
 	--body-whitespace: max(var(--body-min-whitespace), var(--body-max-whitespace));
 	color: var(--global-text-color);
+	margin: 0;
 	padding: calc(var(--body-whitespace) - var(--body-min-whitespace)) var(--body-whitespace);
 	font-family: var(--global-font-family-alpha);
 	/* font-family: var(--global-font-family-beta); */
@@ -307,6 +304,7 @@ ul {
 :is(h1, h2, h3, h4, h5, h6, em) {
 	font-family: var(--global-font-family-beta);
 	font-style: italic;
+	/* font-weight: 700; */
 	color: var(--global-highlight-color);
 }
 
@@ -379,6 +377,25 @@ h1:has(+p),
 
 .gradient-stop-2 {
 	stop-color: var(--global-color-alpha);
+}
+
+a.link-more {
+	color: var(--global-text-color);
+	color: var(--global-meta-color);
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: calc(12/17 * 1rem);
+	border: 1px solid var(--global-borderColor2);
+	/* border: 1px solid var(--global-meta-color); */
+	padding: 0.2rem .75rem .3rem;
+	background-color: var(--global-backgroundColor);
+	/* background-color: hsl(var(--global-neutral-hue) var(--global-neutral-saturation) 30% / .75); */
+	border-radius: 4rem;
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+	/* background-color: rgba(255, 255, 255, 0.5); */
+	/* background-color: #fff; */
+	/* text-decoration-color: var(--global-meta-color); */
 }
 
 .color-meta {

@@ -4,7 +4,7 @@
   "language": "en",
   "description": "Designer &amp; teacher ",
   "feed": {
-    "subtitle": "I am writing about my experiences as a naval navel-gazer.",
+    "subtitle": "I am writing about my experiences",
     "filename": "feed.xml",
     "path": "/feed/feed.xml",
     "id": "https://simoncoudeville.be/"
@@ -15,7 +15,7 @@
   },
   "author": {
     "name": "Simon Coudeville",
-    "email": "youremailaddress@simoncoudeville.be",
-    "url": "https://simoncoudeville.be/about-me/"
+    "email": "info@simoncoudeville.be",
+    "url": "https://simoncoudeville.be"
   }
 }
