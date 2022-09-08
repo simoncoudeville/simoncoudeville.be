@@ -135,4 +135,11 @@ window.addEventListener('scroll', function () {
     logo.rotate.z += speed;
     logo.rotate.x += speed;
     logo.updateRenderGraph();
+
+    // check if the page is scrolled to the top and add a class to the logo if it is not
+    // if (window.scrollY > 0) {
+    //     document.querySelector('.zdog-logo').classList.add('scrolled');
+    // } else {
+    //     document.querySelector('.zdog-logo').classList.remove('scrolled');
+    // }
 });

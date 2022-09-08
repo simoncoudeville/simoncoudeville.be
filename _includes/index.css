@@ -367,7 +367,14 @@ h1:has(+p),
 	cursor: grab;
 	width: 5rem;
 	height: 5rem;
+	transition: transform .1s ease;
+	transition-property: transform, opacity;
 }
+
+/* .zdog-logo.scrolled {
+	transform: scale(0.75);
+	opacity: .75;
+} */
 
 .zdog-logo path {
 	stroke-width: 100;
