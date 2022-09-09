@@ -46,7 +46,7 @@ hr {
 	/* 1 */
 	color: inherit;
 	/* 2 */
-	margin: 3rem 0;
+	margin: calc(var(--global-whitespace) * 2) 0;
 	/* 3 */
 	border: 0;
 	/* 4 */
@@ -59,7 +59,7 @@ Images
 */
 
 figure {
-	margin: 1.5rem 0;
+	margin: var(--global-whitespace) 0;
 }
 
 img {
@@ -109,13 +109,13 @@ Fonts
 	font-style: italic;
 }
 
-/*
+
 @font-face {
 	font-family: 'Tiempos Headline';
 	src: url('/fonts/TiemposHeadlineWeb-Bold.woff') format('woff');
 	font-weight: 700;
 	font-style: normal;
-} */
+}
 
 /*
 Variables
@@ -152,43 +152,21 @@ Variables
 	--global-borderColor: var(--global-color-neutral-050);
 	--global-borderColor2: var(--global-color-neutral-100);
 
-	/* --global-link-color: var(--global-text-color); */
-	--global-link-color: var(--global-highlight-color);
-	/* --global-link-color: var(--global-color-alpha); */
-	/* --global-link-underline-color: var(--global-link-color); */
-	/* --global-link-underline-color: var(--global-color-beta); */
+	--global-link-color: var(--global-text-color);
+	/* --global-link-color: var(--global-highlight-color); */
 	--global-link-underline-color: var(--global-meta-color);
 	--global-link-hover-color: var(--global-link-underline-color);
-	/* --global-link-hover-color: var(--global-color-beta); */
 	--global-selection-backgroundColor: var(--global-text-color);
 	--global-selection-color: var(--global-backgroundColor);
 
-
 	--global-font-family-alpha: "Graphik Web", sans-serif;
-	/* --global-font-family-alpha: "Space Grotesk", sans-serif; */
-	/* --global-font-family-alpha: "Neue Machina", sans-serif; */
-	/* --global-font-family-alpha: "inter", sans-serif; */
-	/* --global-font-family-alpha: "Planc", sans-serif; */
-	/* --global-font-family-alpha: "N27", sans-serif; */
-	/* --global-font-family-alpha: "Office Times Sharp Mono", sans-serif; */
-	/* --global-font-family-alpha: "DM Mono", sans-serif; */
-	/* --global-font-family-alpha: "Suisse Int'l Mono", monospace; */
-	/* --global-font-family-alpha: "Suisse Int'l", sans-serif; */
-	/* --global-font-family-alpha: "Suisse Works", serif; */
-	/* --global-font-family-alpha: "Tiempos Text Web", serif; */
-
-	/* --global-font-family-alpha: "Allrounder Grotesk"; */
-	/* --global-font-family-alpha: "Newsreader", serif; */
-	/* --global-font-family-alpha: georgia, serif; */
-	/* --global-font-family-alpha: "Martian mono", monospace; */
-	/* --global-font-family-alpha: "Sligoil Micro", monospace; */
-
 	--global-font-family-beta: "Tiempos Text Web", serif;
-	/* --global-font-family-beta: "Tiempos Headline", serif; */
-	/* --global-font-family-beta: "Calvino Grande", serif; */
-	/* --global-font-family-beta: "Suisse Works Trial", serif; */
-	/* --global-font-family-beta: "Suisse Works", serif; */
-	/* --global-font-family-beta: "Allrounder Antiqua Test", serif; */
+	--global-font-family-title: "Tiempos Headline", serif;
+
+	--global-font-size: 19;
+	--global-line-height-px: 30;
+	--global-line-height: calc(var(--global-line-height-px) / var(--global-font-size));
+	--global-whitespace: calc(var(--global-line-height) * 1rem);
 }
 
 @supports (color: color(display-p3 1 1 1)) {
@@ -203,12 +181,9 @@ Variables
 		--global-backgroundColor: var(--global-color-neutral-800);
 		--global-text-color: var(--global-color-neutral-025);
 		--global-highlight-color: var(--global-color-neutral-025);
-		/* --global-link-color: hsl(var(--global-color-alpha-hue), 50%, 65%); */
-		/* --global-link-color: var(--global-text-color); */
+		--global-link-underline-color: var(--global-color-neutral-300);
 		--global-borderColor: var(--global-color-neutral-700);
 		--global-borderColor2: var(--global-color-neutral-600);
-
-		--global-link-underline-color: var(--global-color-neutral-300);
 	}
 }
 
@@ -218,52 +193,39 @@ Page
 */
 
 html {
-	font-size: calc(17 / 16 * 100%);
-	line-height: 1.5;
+	font-size: calc(var(--global-font-size) / 16 * 100%);
+	line-height: var(--global-line-height);
 	background-color: var(--global-backgroundColor);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
 body {
-	--body-min-whitespace: 1.5rem;
-	--body-max-whitespace: 1.5rem;
+	--body-min-whitespace: var(--global-whitespace);
+	--body-max-whitespace: var(--global-whitespace);
 	--body-whitespace: max(var(--body-min-whitespace), var(--body-max-whitespace));
 	color: var(--global-text-color);
 	margin: 0;
 	padding: calc(var(--body-whitespace) - var(--body-min-whitespace)) var(--body-whitespace);
 	font-family: var(--global-font-family-alpha);
-	/* font-family: var(--global-font-family-beta); */
 	font-feature-settings: "zero", "liga", "dlig", "lnum";
-	/* font-feature-settings: "zero", "liga", "dlig", "lnum", "salt"; */
 }
 
 @media (min-width: 41em) {
 	body {
-		--body-max-whitespace: 10vw;
+		/* --body-max-whitespace: 10vw; */
+		--body-max-whitespace: calc(var(--global-whitespace) * 2);
 	}
 }
 
-}
 
 ::selection {
 	background-color: var(--global-selection-backgroundColor);
 	color: var(--global-selection-color);
 }
 
-main,
-footer {
-	position: relative;
-}
-
-footer {
-	/* font-family: var(--global-font-family-beta); */
-	color: var(--global-meta-color);
-}
-
 a:any-link {
 	color: var(--global-link-color);
-	/* text-decoration-thickness: from-font; */
 	text-decoration-thickness: 1px;
 	text-underline-offset: .05em;
 	text-decoration-color: var(--global-link-underline-color);
@@ -296,20 +258,31 @@ h5,
 h6,
 p,
 ul {
-	font-size: 1rem;
-	font-weight: inherit;
-	margin: 1.5rem 0;
+	margin: var(--global-whitespace) 0;
 }
 
-:is(h1, h2, h3, h4, h5, h6, em) {
-	font-family: var(--global-font-family-beta);
-	font-style: italic;
-	/* font-weight: 700; */
-	color: var(--global-highlight-color);
+h1 {
+	font-size: calc(32 / var(--global-font-size) * 1rem);
+	line-height: calc(var(--global-line-height-px) * 1.5 / 32);
+}
+
+h1,
+h2,
+h3 {
+	font-family: var(--global-font-family-title);
+}
+
+h2 {
+	font-size: calc(25 / var(--global-font-size) * 1rem);
+	line-height: calc(var(--global-line-height-px) * 1.25 / 25);
+}
+
+h3 {
+	font-size: 1.25rem;
 }
 
 *+h2 {
-	margin-top: 3rem;
+	margin-top: calc(var(--global-whitespace) * 2);
 }
 
 ul {
@@ -336,20 +309,27 @@ h1:has(+p),
 }
 
 .header {
-	min-height: calc(50vh - var(--body-whitespace) - 1.5rem);
+	min-height: calc(50vh - var(--body-whitespace) - var(--global-whitespace));
 	position: sticky;
 	top: var(--body-whitespace);
-	margin: 1.5rem 0;
-	/* margin: 1.5rem 0 5rem; */
-	/* margin-bottom: 3rem; */
-	/* margin-bottom: 20vh; */
-	/* margin-bottom: 1.5rem; */
-	/* margin-bottom: calc(var(--body-whitespace) * 2); */
-	/* margin-bottom: max(3rem, 10vh); */
+	margin: var(--global-whitespace) 0;
 }
 
-.intro {
-	margin: 1.5rem 0;
+.page-header {
+	display: flex;
+	justify-content: space-between;
+	margin: var(--global-whitespace) 0;
+}
+
+.page-header * {
+	margin: 0;
+}
+
+.article-intro {
+	margin: var(--global-whitespace) 0;
+	display: grid;
+	place-items: center;
+	min-height: calc(50vh - var(--body-whitespace) - var(--global-whitespace) * 3);
 }
 
 .zdog-logo {
@@ -386,16 +366,16 @@ a.link-more {
 	text-transform: uppercase;
 	font-size: calc(12/17 * 1rem);
 	border: 1px solid var(--global-borderColor2);
-	/* border: 1px solid var(--global-meta-color); */
 	padding: 0.2rem .75rem .3rem;
 	background-color: var(--global-backgroundColor);
 	/* background-color: hsl(var(--global-neutral-hue) var(--global-neutral-saturation) 30% / .75); */
 	border-radius: 4rem;
 	-webkit-backdrop-filter: blur(10px);
 	backdrop-filter: blur(10px);
-	/* background-color: rgba(255, 255, 255, 0.5); */
-	/* background-color: #fff; */
-	/* text-decoration-color: var(--global-meta-color); */
+}
+
+.footer {
+	color: var(--global-meta-color);
 }
 
 .color-meta {
@@ -410,10 +390,15 @@ a.link-more {
 	color: var(--global-muted-color);
 }
 
+.align-center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .mb-clear {
 	margin-bottom: 0;
 }
 
 .max-width-md {
-	max-width: 33em;
+	max-width: 36em;
 }

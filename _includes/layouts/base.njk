@@ -13,16 +13,8 @@
     <link rel="icon" type="image/svg+xml" href="{{ '/favicon.svg' | url }}">
   </head>
   <body>
-    <div class="header" aria-hidden="true">
-      <svg class="zdog-logo" width="300" height="300"></svg>
-    </div>
-    <main class="main">
-      <div class="max-width-md">
-        {{ content | safe }}
-      </div>
-    </main>
-    <hr>
-    <footer class="max-width-md">
+    {{ content | safe }} <hr>
+    <footer class="footer max-width-md">
       <p>
         Last updated {{ generated }}. Next time you visit this website it might look
         different. Or not, I don't know.
