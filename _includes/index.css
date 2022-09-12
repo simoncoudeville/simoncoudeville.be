@@ -163,9 +163,10 @@ Variables
 	--global-font-family-beta: "Tiempos Text Web", serif;
 	--global-font-family-title: "Tiempos Headline", serif;
 
-	--global-font-size: 19;
-	--global-line-height-px: 30;
-	--global-line-height: calc(var(--global-line-height-px) / var(--global-font-size));
+	--root-font-size: 19;
+	--root-baseline: 5;
+	--root-line-height: calc(var(--root-baseline) * 6);
+	--global-line-height: calc(var(--root-line-height) / var(--root-font-size));
 	--global-whitespace: calc(var(--global-line-height) * 1rem);
 }
 
@@ -193,7 +194,8 @@ Page
 */
 
 html {
-	font-size: calc(var(--global-font-size) / 16 * 100%);
+	/* font-size: calc(var(--root-font-size) / 16 * 100%); */
+	font-size: clamp(100%, 1.5vw + 0.438rem, calc(var(--root-font-size) / 16 * 100%));
 	line-height: var(--global-line-height);
 	background-color: var(--global-backgroundColor);
 	-webkit-font-smoothing: antialiased;
@@ -262,8 +264,9 @@ ul {
 }
 
 h1 {
-	font-size: calc(32 / var(--global-font-size) * 1rem);
-	line-height: calc(var(--global-line-height-px) * 1.5 / 32);
+	--fs: 32;
+	font-size: calc(var(--fs) / var(--root-font-size) * 1rem);
+	line-height: calc(var(--root-baseline) * 8 / var(--fs));
 }
 
 h1,
@@ -273,8 +276,9 @@ h3 {
 }
 
 h2 {
-	font-size: calc(25 / var(--global-font-size) * 1rem);
-	line-height: calc(var(--global-line-height-px) * 1.25 / 25);
+	--fs: 25;
+	font-size: calc(var(--fs) / var(--root-font-size) * 1rem);
+	line-height: calc(var(--root-baseline) * 7 / var(--fs));
 }
 
 h3 {
