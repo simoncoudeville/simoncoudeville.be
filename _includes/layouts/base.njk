@@ -13,12 +13,17 @@
     <link rel="icon" type="image/svg+xml" href="{{ '/favicon.svg' | url }}">
   </head>
   <body>
-    {{ content | safe }} <hr>
-    <footer class="footer max-width-md">
-      <p>
-        Last updated {{ generated }}. Next time you visit this website it might look
-        different. Or not, I don't know.
-      </p>
+    {{ content | safe }}
+    {# <hr> #}
+    <footer class="row">
+      <div class="container">
+        <div class="page-footer">
+          <p>
+            Last updated {{ generated }}. Next time you visit this website it might look
+            different. Or not, I don't know.
+          </p>
+        </div>
+      </div>
     </footer>
     <svg class="gradient-container" aria-hidden="true">
       <defs>

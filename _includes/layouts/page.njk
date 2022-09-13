@@ -1,0 +1,43 @@
+---
+layout: layouts/base.njk
+templateClass: tmpl-post
+---
+
+<div class="page-header max-width-md align-center">
+    <p>
+        <a href="/">Simon Coudeville</a>
+    </p>
+    <p class="color-meta">
+        {{ title }}
+    </p>
+</div>
+<div class="max-width-md align-center">
+    <div class="article-header">
+        <h1>{{ title }}</h1>
+    </div>
+    {%- for tag in tags | filterTagList -%}
+        {%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
+        <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
+    {%- endfor %}
+    {{ content | safe }}
+    {%- if collections.posts %}
+        {%- set nextPost = collections.posts | getNextCollectionItem(page) %}
+        {%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
+        {%- if nextPost or previousPost %}
+            <ul>
+                {%- if nextPost %}
+                    <li>
+                        Next:
+                        <a href="{{ nextPost.url | url }}">{{ nextPost.data.title }}</a>
+                    </li>
+                {% endif %}
+                {%- if previousPost %}
+                    <li>
+                        Previous:
+                        <a href="{{ previousPost.url | url }}">{{ previousPost.data.title }}</a>
+                    </li>
+                {% endif %}
+            </ul>
+        {%- endif %}
+    {%- endif %}
+</div>
