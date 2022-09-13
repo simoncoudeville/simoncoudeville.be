@@ -86,42 +86,16 @@ Fonts
 		url('../fonts/Graphik-Regular-Web.woff2') format('woff2');
 	font-weight: 400;
 	font-style: normal;
+	font-display: auto;
 }
-
-/* @font-face {
-	font-family: 'Tiempos Text Web';
-	src: url('../fonts/TiemposTextWeb-Regular.woff') format('woff');
-	font-weight: 400;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Tiempos Text Web';
-	src: url('../fonts/TiemposTextWeb-Semibold.woff') format('woff');
-	font-weight: 700;
-	font-style: normal;
-} */
 
 @font-face {
 	font-family: 'Tiempos Text Web';
 	src: url('../fonts/TiemposTextWeb-Regularitalic.woff') format('woff');
 	font-weight: 400;
 	font-style: italic;
+	font-display: auto;
 }
-
-/* @font-face {
-	font-family: 'Tiempos Text Web';
-	src: url('../fonts/TiemposTextWeb-Semibolditalic.woff') format('woff');
-	font-weight: 700;
-	font-style: italic;
-}
-
-@font-face {
-	font-family: 'Tiempos Headline';
-	src: url('../fonts/TiemposHeadlineWeb-Bold.woff') format('woff');
-	font-weight: 700;
-	font-style: normal;
-} */
 
 /*
 Variables
@@ -224,6 +198,8 @@ Page
 html {
 	font-size: calc(17 / 16 * 100%);
 	line-height: 1.5;
+	font-family: var(--global-font-family-alpha);
+	font-feature-settings: "zero", "liga", "dlig", "lnum";
 	background-color: var(--global-backgroundColor);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -235,10 +211,6 @@ body {
 	--body-whitespace: max(var(--body-min-whitespace), var(--body-max-whitespace));
 	color: var(--global-text-color);
 	padding: calc(var(--body-whitespace) - var(--body-min-whitespace)) var(--body-whitespace);
-	font-family: var(--global-font-family-alpha);
-	/* font-family: var(--global-font-family-beta); */
-	font-feature-settings: "zero", "liga", "dlig", "lnum";
-	/* font-feature-settings: "zero", "liga", "dlig", "lnum", "salt"; */
 }
 
 @media (min-width: 41em) {
