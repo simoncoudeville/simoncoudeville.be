@@ -11,13 +11,13 @@ eleventyNavigation:
   </h1>
   <p class="intro-text">
     &mdash; a designer who likes to code. I'm into responsive web-design, HTML &
-    CSS, Javascript, typography and animation. Currently I'm teaching these topics at
-    {# <a href="https://mct.be/">MCT</a>
+    CSS, Javascript, typography and animation. Currently I'm teaching these topics
+    at
+    <a href="https://mct.be/">MCT</a>
     and
-    <a href="https://www.devine.be/">Devine</a>. #}
-    <a href="">Howest University of Applied Sciences</a>.
-    Feel free to send me an
-    <a href="mailto:me@simoncoudeville.be">email</a>. Or you can just follow me on
+    <a href="https://www.devine.be/">Devine</a>.
+                Feel free to send me an
+    <a href="mailto:me@simoncoudeville.be">email</a>. Follow me on
     <a href="https://codepen.io/simoncoudeville">Codepen</a>
     or
     <a href="https://twitter.com/simoncoudeville">Twitter</a>.
@@ -30,48 +30,12 @@ eleventyNavigation:
   <a href="/sam">Sam</a>. Yes, I made a webpage for them.
 </p> #}
 <h2>
-  Latest
+  Latest things
 </h2>
 <ul>
-  <li>
-    Rediscovered
-    <a href="https://zzz.dog/">zdog</a>, a pseudo-3D engine for the web. Check out
-    <a href="https://codepen.io/simoncoudeville/pen/NWMqPeQ">this codepen</a>
-    to see how I made an animated logo.
-  </li>
-  <li>
-    Launched the
-    <a href="https://www.ottomator.be/">Ottomator</a>. An interactive random birth card generator for my nephew Otto.
-  </li>
-  <li>
-    Looking into new color profiles for the web such as
-    <a href="https://webkit.org/blog/10042/wide-gamut-color-in-css-with-display-p3/">
-      Display-P3</a>
-    and
-    <a href="https://lea.verou.me/2020/04/lch-colors-in-css-what-why-and-how/">LCH</a>. Check out
-    <a href="https://codepen.io/simoncoudeville/pen/PoQpLWa">this codepen</a>
-    (in Safari) to see the difference between RGB and Display-P3.
-  </li>
-  <li>
-    Testing different static site generators such as
-    <a href="https://www.11ty.dev/">11ty</a>
-    and
-    <a href="https://www.getzola.org/">Zola</a>
-    to start a blog. Yeah I know, I should have started one years ago.
-  </li>
-  <li>
-    Experimenting with the feTurbulence SVG filter in CSS. Have a look at
-    <a href="https://codepen.io/simoncoudeville/pen/zYRygaV">this codepen</a>
-    to see what it does.
-  </li>
+  {% for experiment in experiments %}
+    <li>
+      {{ experiment | safe }}
+    </li>
+  {% endfor %}
 </ul>
-{# <h2>
-  Connect
-</h2>
-<p>
-  Feel free to send me an
-  <a href="mailto:me@simoncoudeville.be">email</a>. Or you can just follow me on
-  <a href="https://codepen.io/simoncoudeville">Codepen</a>
-  or
-  <a href="https://twitter.com/simoncoudeville">Twitter</a>.
-</p> #}
