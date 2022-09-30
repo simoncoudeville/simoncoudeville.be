@@ -14,33 +14,17 @@
   </head>
   <body>
     {{ content | safe }}
-    {# <hr> #}
+    {# <hr class="container"> #}
     <footer class="row">
       <div class="container">
         <div class="page-footer">
           <p>
             Last updated {{ generated }}. Next time you visit this website it might look
-            different. Or not, I don't know.
+            different. Or not, I don't know. No cookies here.
           </p>
         </div>
       </div>
     </footer>
-    <svg class="gradient-container" aria-hidden="true">
-      <defs>
-        <linearGradient
-          id="gradient"
-          gradienttransform="scale(1.5)"
-          x1="0%"
-          y1="0%"
-          x2="100%"
-          y2="50%"
-          spreadmethod="pad">
-          <stop class="gradient-stop-1" offset="0%" stop-color="tomato"/>
-          <stop class="gradient-stop-2" offset="100%" stop-color="indigo"/>
-        </linearGradient>
-      </defs>
-    </svg>
-    <script src="{{ '/js/zdog.dist.min.js' | url }}"></script>
     {% set js %}
     {% include "script.js" %}
     {% endset %}

@@ -5,89 +5,37 @@ eleventyNavigation:
   order: 1
 ---
 
-<div class="header" aria-hidden="true">
-  <svg class="zdog-logo" width="300" height="300"></svg>
-</div>
-<header class="intro">
-  <h1 class="intro-title">
-    I'm Simon Coudeville
-  </h1>
-  <p class="intro-text">
-    &mdash; a designer who likes to code. I'm into responsive web-design, HTML &
-    CSS, Javascript, typography and animation. Currently teaching these topics at
-    <a href="https://mct.be/">MCT</a>
-    and
-    <a href="https://www.devine.be/">Devine</a>.
-  </p>
-  {# <p>
-                  <a class="link-more" href="#more">
-                    Read more
-                  </a>
-                </p>
-                #}
-</header>
-{# <p>
-  I've been writing CSS since the beginning and it has become my main tool to
-  create I live in Bruges, Belgium together with my wife and two kids,
-  <a href="/ida">Ida</a>
-  &amp;
-  <a href="/sam">Sam</a>. Yes, I made a webpage for them.
-</p> #}
-{% set maxPosts = collections.posts.length | min(3) %}
-<h2>Latest blog
-  {% if maxPosts == 1 %}post
-  {% else %}
-    {{ maxPosts }} posts{% endif %}
-</h2>
-{% set postslist = collections.posts | head(-3) %}
-{% set postslistCounter = collections.posts | length %}
-{% include "postslist.njk" %}
-<p>More posts can be found in
-  <a href="{{ '/posts/' | url }}">the archive</a>.
-</p>
-<h2>
-  Latest
-</h2>
-<ul>
-  <li>
-    Rediscovered
-    <a href="https://zzz.dog/">zdog</a>, a pseudo-3D engine for the web. Check out
-    <a href="https://codepen.io/simoncoudeville/pen/NWMqPeQ">this codepen</a>
-    to see how I made my logo animation.
-  </li>
-  <li>
-    Launched the
-    <a href="https://www.ottomator.be/">Ottomator</a>. An interactive random birth card generator for my nephew Otto.
-  </li>
-  <li>
-    Looking into new color profiles for the web such as
-    <a href="https://webkit.org/blog/10042/wide-gamut-color-in-css-with-display-p3/">
-      Display-P3</a>
-    and
-    <a href="https://lea.verou.me/2020/04/lch-colors-in-css-what-why-and-how/">LCH</a>. Check out
-    <a href="https://codepen.io/simoncoudeville/pen/PoQpLWa">this codepen</a>
-    (in Safari) to see the difference between RGB and Display-P3.
-  </li>
-  <li>
-    Testing different static site generators such as
-    <a href="https://www.11ty.dev/">11ty</a>
-    and
-    <a href="https://www.getzola.org/">Zola</a>
-    to start a blog. Yeah I know, I should have started one years ago.
-  </li>
-  <li>
-    Experimenting with the feTurbulence SVG filter in CSS. Have a look at
-    <a href="https://codepen.io/simoncoudeville/pen/zYRygaV">this codepen</a>
-    to see what it does.
-  </li>
-</ul>
-<h2>
-  Connect
-</h2>
-<p>
-  Feel free to send me an
-  <a href="mailto:me@simoncoudeville.be">email</a>. Or you can just follow me on
-  <a href="https://codepen.io/simoncoudeville">Codepen</a>
-  or
-  <a href="https://twitter.com/simoncoudeville">Twitter</a>.
-</p>
+{% set postslist = collections.posts | head(-1) %}
+{{ postlist.data.title }}
+{% for post in postslist | head(-1) %}
+  {% set title = post.data.title %}
+  <header class="row row--page-header js-page-header">
+    <div class="container">
+      <div class="page-header">
+        <h2 class="logo">
+          <a class="logo__link" href="/">Simon Coudeville</a>
+        </h2>
+        <span class="page-header__title color-meta">{{ title }}</span>
+        <time class="page-header__date text-date color-meta" datetime="{{ post.data.date | htmlDateString }}">{{ post.data.date | readableDate }}</time>
+      </div>
+    </div>
+  </header>
+  <article class="row pt-clear">
+    <div class="container">
+      <div class="article-header">
+        <h1 class="js-article-title">{{ title }}</h1>
+      </div>
+      {{ post.templateContent | safe }}
+    </div>
+  </article>
+  <section class="row">
+    <div class="container">
+      {% include "about.njk" %}
+    </div>
+  </section>
+  <section class="row">
+    <div class="container">
+      {% include "allposts.njk" %}
+    </div>
+  </section>
+{% endfor %}

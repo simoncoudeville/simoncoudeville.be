@@ -3,47 +3,36 @@ layout: layouts/base.njk
 templateClass: tmpl-post
 ---
 
-<div class="page-header-observer js-page-header-observer"></div>
 <header class="row row--page-header js-page-header">
   <div class="container">
     <div class="page-header">
       <h2 class="logo">
-        <a href="/">Simon Coudeville</a>
+        <a class="logo__link" href="/">Simon Coudeville</a>
       </h2>
       <span class="page-header__title color-meta">{{ title }}</span>
-      <time class="page-header__date color-meta" datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
+      <time class="page-header__date color-meta text-date" datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
     </div>
   </div>
 </header>
 <article class="row pt-clear">
   <div class="container">
-    <div class="article-header">
+    <header class="article-header">
       <h1 class="js-article-title">{{ title }}</h1>
-    </div>
+    </header>
     {%- for tag in tags | filterTagList -%}
       {%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
       <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
     {%- endfor %}
     {{ content | safe }}
-    {%- if collections.posts %}
-      {%- set nextPost = collections.posts | getNextCollectionItem(page) %}
-      {%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
-      {%- if nextPost or previousPost %}
-        <ul>
-          {%- if nextPost %}
-            <li>
-              Next:
-              <a href="{{ nextPost.url | url }}">{{ nextPost.data.title }}</a>
-            </li>
-          {% endif %}
-          {%- if previousPost %}
-            <li>
-              Previous:
-              <a href="{{ previousPost.url | url }}">{{ previousPost.data.title }}</a>
-            </li>
-          {% endif %}
-        </ul>
-      {%- endif %}
-    {%- endif %}
   </div>
 </article>
+<section class="row">
+  <div class="container">
+    {% include "about.njk" %}
+  </div>
+</section>
+<section class="row">
+  <div class="container">
+    {% include "allposts.njk" %}
+  </div>
+</section>

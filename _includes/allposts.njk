@@ -1,0 +1,10 @@
+{% set maxPosts = collections.posts.length %}
+<h2>
+    All {{ maxPosts }} Articles
+</h2>
+{% set postslist = collections.posts %}
+{% include "postslist.njk" %}
+{# <p>
+    More posts can be found in
+    <a href="{{ '/posts/' | url }}">the archive</a>.
+</p> #}
