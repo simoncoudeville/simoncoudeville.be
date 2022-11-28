@@ -137,6 +137,7 @@ Variables
 		--global-highlight-color: var(--global-color-neutral-025);
 		--global-borderColor: var(--global-color-neutral-700);
 		--global-borderColor2: var(--global-color-neutral-600);
+		--global-meta-color: var(--global-color-neutral-400);
 	}
 }
 
@@ -145,13 +146,46 @@ Page
 ====
 */
 
+/* modern reset */
+
+* {
+	margin: 0;
+}
+
+
 html {
-	font-size: clamp(100%, 1.5vw + 0.438rem, calc(var(--root-font-size) / 16 * 100%));
+	/* --this-min-width: 320;
+	--this-max-width: 744;
+	--this-min-font-size: 16;
+	--this-max-font-size: var(--root-font-size);
+	--fluid-text-min-width: calc(var(--this-min-width) / 16);
+	--fluid-text-max-width: calc(var(--this-max-width) / 16);
+	--fluid-text-min-font-size: calc(var(--this-min-font-size) / 16);
+	--fluid-text-max-font-size: calc(var(--this-max-font-size) / 16);
+	--fluid-text-slope: calc(calc(var(--fluid-text-max-font-size) - var(--fluid-text-min-font-size)) / calc(var(--fluid-text-max-width) - var(--fluid-text-min-width)));
+	--fluid-text-slope-unit: var(--this-slope-unit, 100vw);
+	--fluid-text-intercept: calc(var(--fluid-text-min-font-size) - var(--fluid-text-slope) * var(--fluid-text-min-width));
+	--fluid-text-font-size: clamp(calc(var(--fluid-text-min-font-size) * 1rem), calc(var(--fluid-text-slope) * var(--fluid-text-slope-unit)) + calc(var(--fluid-text-intercept) * 1rem), calc(var(--fluid-text-max-font-size) * 1rem)); */
+	/* font-size: var(--fluid-text-font-size); */
+	/* font-size: clamp(100%, 1.5vw + 0.438rem, calc(var(--root-font-size) / 16 * 100%)); */
+	font-size: 100%;
 	line-height: var(--global-line-height);
 	background-color: var(--global-backgroundColor);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-text-size-adjust: 100%;
+}
+
+@media screen and (min-width: 46.5em) {
+	html {
+		font-size: calc(19/16*100%);
+	}
+}
+
+@media screen and (min-width: 105.0625em) {
+	html {
+		font-size: calc(22/16*100%);
+	}
 }
 
 *,
@@ -167,11 +201,11 @@ body {
 	color: var(--global-text-color);
 }
 
-@media (min-width: 41em) {
+/* @media (min-width: 41em) {
 	body {
 		padding-top: var(--global-whitespace);
 	}
-}
+} */
 
 ::selection {
 	background-color: var(--global-selection-backgroundColor);
@@ -207,32 +241,14 @@ hr {
 	background-color: var(--global-borderColor);
 }
 
-code {
-	font-family:
-		ui-monospace,
-		Menlo, Monaco,
-		"Cascadia Mono", "Segoe UI Mono",
-		"Roboto Mono",
-		"Oxygen Mono",
-		"Ubuntu Monospace",
-		"Source Code Pro",
-		"Fira Mono",
-		"Droid Sans Mono",
-		"Courier New", monospace;
-
-	/* font-family: inherit; */
-	font-size: .95em;
-	color: var(--global-meta-color);
-}
-
 /*
 Images
 ======
 */
-
+/*
 figure {
 	margin: var(--global-whitespace) 0;
-}
+} */
 
 img {
 	max-width: 100%;
@@ -244,7 +260,7 @@ Typography
 ==========
 */
 
-h1,
+/* h1,
 h2,
 h3,
 h4,
@@ -254,7 +270,7 @@ p,
 ul,
 ol {
 	margin: var(--global-whitespace) 0;
-}
+} */
 
 h1,
 .h1 {
@@ -281,9 +297,10 @@ h3,
 	font-weight: var(--global-title-font-weight);
 }
 
+/*
 *+h2 {
 	margin-top: calc(var(--global-whitespace) * 2);
-}
+} */
 
 ul li::marker {
 	color: var(--global-color-beta);
@@ -297,6 +314,19 @@ h1:has(+p),
 }
 
 /*
+Flow Content
+============
+*/
+
+.flow>*+* {
+	margin-top: var(--global-whitespace);
+}
+
+.flow>*+h2 {
+	margin-top: calc(var(--global-whitespace) * 2);
+}
+
+/*
 Objects and components
 ======================
 */
@@ -304,7 +334,7 @@ Objects and components
 .row {
 	position: relative;
 	display: flow-root;
-	padding: var(--global-whitespace);
+	padding: calc(var(--global-whitespace) * 2) var(--global-whitespace);
 }
 
 .row--page-header {
@@ -315,6 +345,7 @@ Objects and components
 	z-index: 1;
 	background-color: var(--row-page-header-background-color);
 	backdrop-filter: blur(5px);
+	padding: var(--global-whitespace);
 }
 
 .row--page-header::after {
@@ -334,6 +365,10 @@ Objects and components
 	opacity: 1;
 }
 
+.row--page-footer {
+	padding-bottom: var(--global-whitespace);
+}
+
 @media (prefers-color-scheme: dark) {
 	.row--page-header {
 		--row-page-header-background-color-lightness: 10%;
@@ -343,7 +378,7 @@ Objects and components
 }
 
 .container {
-	max-width: 36em;
+	max-width: 36rem;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -416,11 +451,11 @@ body:has(.title-collides) .page-header__date {
 }
 
 .article-header {
-	margin-bottom: var(--global-whitespace);
+	/* margin-bottom: var(--global-whitespace); */
 	display: grid;
 	place-items: center;
 	text-align: center;
-	min-height: calc(50vh - var(--global-whitespace) * 5);
+	min-height: calc(50vh - var(--global-whitespace) * 4);
 }
 
 .page-footer {
@@ -440,7 +475,6 @@ h2:hover a.direct-link {
 .postlist {
 	--postlist-whitespace: var(--global-whitespace-2xs);
 	--postlist-inline-whitespace: var(--postlist-whitespace);
-	/* margin-top: calc(var(--postlist-whitespace) / -2); */
 }
 
 .postlist__item:first-child {
@@ -541,3 +575,188 @@ Utilities
 .text-date {
 	font-feature-settings: "zero", "tnum", "case";
 }
+
+/* prism */
+
+/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	--prism-font-size: 16;
+	--prism-color: var(--global-color-neutral-025);
+	--prism-background: var(--global-color-neutral-800);
+	--prism-border-color: var(--global-color-neutral-800);
+	--prism-selection-color: var(--global-color-neutral-800);
+	--prism-selection-background: var(--global-color-neutral-025);
+	color: var(--prism-color);
+	font-family: ui-monospace,
+		Menlo, Monaco,
+		"Cascadia Mono", "Segoe UI Mono",
+		"Roboto Mono",
+		"Oxygen Mono",
+		"Ubuntu Monospace",
+		"Source Code Pro",
+		"Fira Mono",
+		"Droid Sans Mono",
+		"Courier New", monospace;
+	/* background-color: var(--global-foregroundColor); */
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	font-size: calc(var(--prism-font-size) / var(--root-font-size) * 1rem);
+	line-height: calc(var(--root-baseline) * 5 / var(--prism-font-size));
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* code[class*="language-"] *::selection,
+pre[class*="language-"] *::selection {
+	background: var(--prism-selection-background);
+	color: var(--prism-selection-color);
+} */
+
+@media (prefers-color-scheme: dark) {
+
+	code[class*="language-"],
+	pre[class*="language-"] {
+		--prism-border-color: var(--global-borderColor);
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: var(--global-whitespace);
+	margin: var(--global-whitespace-l) 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre)>code[class*="language-"],
+pre[class*="language-"] {
+	border: 1px solid var(--prism-border-color);
+	background: var(--prism-background);
+}
+
+/* Inline code */
+:not(pre)>code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: var(--global-color-neutral-400);
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.operator,
+.token.number,
+.token.punctuation,
+.token.function {
+	color: var(--global-color-neutral-300);
+}
+
+.token.deleted {
+	text-decoration: line-through;
+}
+
+.token.italic {
+	font-style: italic;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+/*
+.token.punctuation {
+	color: var(--prism-color);
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: var(--prism-color);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+} */
