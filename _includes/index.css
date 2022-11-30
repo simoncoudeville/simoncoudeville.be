@@ -76,13 +76,17 @@ Variables
 	--global-color-neutral-900: hsl(var(--global-neutral-hue), var(--global-neutral-saturation), 5%);
 
 	--global-backgroundColor: var(--global-color-neutral-025);
-	--global-foregroundColor: var(--global-color-neutral-050);
+	--global-foregroundColor: white;
 	--global-text-color: var(--global-color-neutral-800);
 	--global-highlight-color: var(--global-color-neutral-800);
 	--global-meta-color: var(--global-color-neutral-500);
 	--global-muted-color: var(--global-color-neutral-300);
 	--global-borderColor: var(--global-color-neutral-050);
 	--global-borderColor2: var(--global-color-neutral-100);
+	--global-code-color: var(--global-color-neutral-025);
+	--global-code-background: var(--global-color-neutral-800);
+	--global-code-selection-color: var(--global-code-background);
+	--global-code-selection-background: var(--global-code-color);
 
 	--global-borderRadius: 0.25rem;
 
@@ -97,9 +101,10 @@ Variables
 	/* --global-font-family-title: "Suisse Int'l", sans-serif; */
 	--global-font-family-beta: "Tiempos Text Web", serif;
 	--global-font-family-title: "Tiempos Headline", serif;
+	--global-font-family-code: "SFMono-Regular", ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 	/* --global-font-family-alpha: "Suisse Works", serif; */
 
-	--global-title-font-weight: 400;
+	--global-title-font-weight: 700;
 
 	--root-font-size: 19;
 	--root-baseline: 5;
@@ -146,8 +151,6 @@ Page
 ====
 */
 
-/* modern reset */
-
 * {
 	margin: 0;
 }
@@ -168,7 +171,8 @@ html {
 	--fluid-text-font-size: clamp(calc(var(--fluid-text-min-font-size) * 1rem), calc(var(--fluid-text-slope) * var(--fluid-text-slope-unit)) + calc(var(--fluid-text-intercept) * 1rem), calc(var(--fluid-text-max-font-size) * 1rem)); */
 	/* font-size: var(--fluid-text-font-size); */
 	/* font-size: clamp(100%, 1.5vw + 0.438rem, calc(var(--root-font-size) / 16 * 100%)); */
-	font-size: 100%;
+	font-size: clamp(1rem, 0.46875vw + 0.90625rem, 1.1875rem);
+	/* font-size: 100%; */
 	line-height: var(--global-line-height);
 	background-color: var(--global-backgroundColor);
 	-webkit-font-smoothing: antialiased;
@@ -176,7 +180,7 @@ html {
 	-webkit-text-size-adjust: 100%;
 }
 
-@media screen and (min-width: 46.5em) {
+/* @media screen and (min-width: 46.5em) {
 	html {
 		font-size: calc(19/16*100%);
 	}
@@ -186,7 +190,7 @@ html {
 	html {
 		font-size: calc(22/16*100%);
 	}
-}
+} */
 
 *,
 ::before,
@@ -207,9 +211,13 @@ body {
 	}
 } */
 
+.test {}
+
 ::selection {
-	background-color: var(--global-selection-backgroundColor);
-	color: var(--global-selection-color);
+	--selection-color: var(--global-selection-color);
+	--selection-background: var(--global-selection-backgroundColor);
+	background-color: var(--selection-background);
+	color: var(--selection-color);
 }
 
 a:any-link {
@@ -239,6 +247,60 @@ hr {
 	margin: calc(var(--global-whitespace) * 2) 0;
 	border: 0;
 	background-color: var(--global-borderColor);
+}
+
+label {
+	--label-fontSize: 16;
+	display: block;
+	font-size: calc(var(--label-fontSize) / var(--root-font-size) * 1rem);
+}
+
+label,
+input,
+select,
+textarea {
+	display: block;
+	width: 100%;
+}
+
+input:not([type='checkbox']),
+input:not([type='radio']),
+select {
+	--input-color: var(--global-text-color);
+	--input-borderColor: var(--global-borderColor);
+	--input-backgroundColor: var(--global-foregroundColor);
+	/* --input-backgroundColor: transparent; */
+	--input-fontSize: 16;
+	font-family: inherit;
+	font-size: calc(var(--input-fontSize) / var(--root-font-size) * 1rem);
+	line-height: calc(var(--global-line-height) * 1);
+	padding: var(--global-whitespace-3xs) var(--global-whitespace-2xs);
+	/* border: 1px solid var(--input-borderColor); */
+	border: none;
+	background-color: var(--input-backgroundColor);
+	color: var(--input-color);
+	border-radius: var(--global-borderRadius);
+}
+
+label input,
+label select {
+	margin-top: var(--global-whitespace-4xs);
+}
+
+input:focus-visible,
+select:focus-visible {
+	outline: 1px solid var(--global-highlight-color);
+	outline-offset: .2em;
+}
+
+input:focus:not(:focus-visible),
+select:focus:not(:focus-visible) {
+	outline: none;
+}
+
+input:disabled,
+select:disabled {
+	opacity: .5;
 }
 
 /*
@@ -340,8 +402,8 @@ Objects and components
 .row--page-header {
 	--row-page-header-background-color: hsla(var(--global-neutral-hue), var(--global-neutral-saturation), var(--row-page-header-background-color-lightness, 95%), var(--row-page-header-background-color-opacity, .9));
 	--row-page-header-border-color: hsla(var(--global-neutral-hue), var(--global-neutral-saturation), var(--row-page-header-border-color-lightness, 10%), var(--row-page-header-border-color-opacity, .1));
-	position: sticky;
-	top: 0;
+	/* position: sticky;
+	top: 0; */
 	z-index: 1;
 	background-color: var(--row-page-header-background-color);
 	backdrop-filter: blur(5px);
@@ -564,6 +626,38 @@ Utilities
 	margin-bottom: 0;
 }
 
+.mb-xs {
+	margin-bottom: var(--global-whitespace-xs);
+}
+
+.mb-2xs {
+	margin-bottom: var(--global-whitespace-2xs);
+}
+
+.mb-3xs {
+	margin-bottom: var(--global-whitespace-3xs);
+}
+
+.mb-4xs {
+	margin-bottom: var(--global-whitespace-4xs);
+}
+
+.mb-s {
+	margin-bottom: var(--global-whitespace-s);
+}
+
+.mb-m {
+	margin-bottom: var(--global-whitespace-m);
+}
+
+.mb-l {
+	margin-bottom: var(--global-whitespace-l);
+}
+
+.mb-xl {
+	margin-bottom: var(--global-whitespace-xl);
+}
+
 .pt-clear {
 	padding-top: 0;
 }
@@ -572,8 +666,26 @@ Utilities
 	max-width: 36em;
 }
 
-.text-date {
+.text-center {
+	text-align: center;
+}
+
+.text-date,
+.text-formula {
 	font-feature-settings: "zero", "tnum", "case";
+}
+
+.text-formula,
+.text-code {
+	font-family: var(--global-font-family-code);
+	/* font-family: var(--global-font-family-beta); */
+	/* font-style: italic; */
+}
+
+.text-s {
+	--fs: 16;
+	font-size: calc(var(--fs) / var(--root-font-size) * 1rem);
+	line-height: calc(var(--global-line-height) * 1);
 }
 
 /* prism */
@@ -587,22 +699,13 @@ Utilities
 code[class*="language-"],
 pre[class*="language-"] {
 	--prism-font-size: 16;
-	--prism-color: var(--global-color-neutral-025);
-	--prism-background: var(--global-color-neutral-800);
+	--prism-color: var(--global-code-color);
+	--prism-background: var(--global-code-background);
 	--prism-border-color: var(--global-color-neutral-800);
-	--prism-selection-color: var(--global-color-neutral-800);
-	--prism-selection-background: var(--global-color-neutral-025);
+	--prism-selection-color: var(--global-code-selection-color);
+	--prism-selection-background: var(--global-code-selection-background);
 	color: var(--prism-color);
-	font-family: ui-monospace,
-		Menlo, Monaco,
-		"Cascadia Mono", "Segoe UI Mono",
-		"Roboto Mono",
-		"Oxygen Mono",
-		"Ubuntu Monospace",
-		"Source Code Pro",
-		"Fira Mono",
-		"Droid Sans Mono",
-		"Courier New", monospace;
+	font-family: var(--global-font-family-code);
 	/* background-color: var(--global-foregroundColor); */
 	text-align: left;
 	white-space: pre;
@@ -610,7 +713,7 @@ pre[class*="language-"] {
 	word-break: normal;
 	word-wrap: normal;
 	font-size: calc(var(--prism-font-size) / var(--root-font-size) * 1rem);
-	line-height: calc(var(--root-baseline) * 5 / var(--prism-font-size));
+	line-height: calc(var(--root-line-height) / var(--prism-font-size));
 
 	-moz-tab-size: 4;
 	-o-tab-size: 4;
@@ -622,11 +725,11 @@ pre[class*="language-"] {
 	hyphens: none;
 }
 
-/* code[class*="language-"] *::selection,
+code[class*="language-"] *::selection,
 pre[class*="language-"] *::selection {
 	background: var(--prism-selection-background);
 	color: var(--prism-selection-color);
-} */
+}
 
 @media (prefers-color-scheme: dark) {
 
@@ -641,7 +744,7 @@ pre[class*="language-"] {
 	padding: var(--global-whitespace);
 	margin: var(--global-whitespace-l) 0;
 	overflow: auto;
-	border-radius: 0.3em;
+	border-radius: var(--global-borderRadius);
 }
 
 :not(pre)>code[class*="language-"],
@@ -760,3 +863,50 @@ pre[class*="language-"] {
 .token.entity {
 	cursor: help;
 } */
+
+.demo {
+	border: 1px solid var(--global-borderColor);
+	padding: var(--global-whitespace);
+	border-radius: var(--global-borderRadius);
+	/* margin: var(--global-whitespace-l) calc(var(--global-whitespace) * -1); */
+	margin: var(--global-whitespace-l) 0;
+	/* background-color: var(--global-foregroundColor); */
+}
+
+.clamp {
+	display: grid;
+	gap: var(--global-whitespace);
+	grid-template-columns: 1fr 1fr;
+}
+
+.clamp__input {
+	grid-column: 1/-1;
+}
+
+.clamp__output {
+	grid-column: 1/-1;
+	/* padding: var(--global-whitespace); */
+	margin: 0 calc(var(--global-whitespace) * -1);
+	/* border: 1px solid var(--global-borderColor);
+	border-width: 1px 0;
+	color: var(--global-code-color); */
+}
+
+.clamp__output pre {
+	margin: 0;
+	border-radius: 0;
+	border-width: 1px 0;
+}
+
+.clamp__formula {
+	/* background-color: var(--global-backgroundColor); */
+	/* background-color: var(--global-code-background); */
+
+	/* border-radius: var(--global-borderRadius); */
+
+}
+
+.clamp__formula::selection {
+	--selection-color: var(--global-code-selection-color);
+	--selection-background: var(--global-code-selection-background);
+}

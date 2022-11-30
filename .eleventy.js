@@ -13,6 +13,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("img");
   // eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("fonts");
+  eleventyConfig.addPassthroughCopy("js");
   eleventyConfig.addPassthroughCopy({ "img/favicon": "/" });
   eleventyConfig.addPassthroughCopy({
     "./node_modules/zdog/dist/zdog.dist.min.js": "/js/zdog.dist.min.js",
