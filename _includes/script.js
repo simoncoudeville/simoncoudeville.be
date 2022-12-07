@@ -38,6 +38,7 @@ if (document.querySelector('.js-page-header-observer')) {
 
 // make a const clampform with id clamp
 const clampform = document.getElementById('clamp');
+const zoomform = document.getElementById('zoom');
 const clampMinWidth = document.getElementById('clamp-min-width');
 const clampMaxWidth = document.getElementById('clamp-max-width');
 const clampBrowserWidth = document.getElementById('clamp-browser-width');
@@ -45,13 +46,20 @@ const clampMinFontSize = document.getElementById('clamp-min-font-size');
 const clampMaxFontSize = document.getElementById('clamp-max-font-size');
 const clampFormula = document.getElementById('clamp-formula');
 const clampFormulaExplanation = document.getElementById('clamp-formula-explanation');
+const clampCalculateVw = document.getElementById('clamp-calculate-vw');
+const clampCalculateRem = document.getElementById('clamp-calculate-rem');
 const clampOutput = document.getElementById('clamp-output');
 const zoomOutput = document.getElementById('zoom-output');
 const clampZoomLevel = document.getElementById('clamp-zoom-level');
 
-function round(value, precision = 0) {
+function round(value, precision = 0, addZero = true) {
     const exponent = Math.pow(10, precision);
-    return Math.round(value * exponent) / exponent;
+    if (addZero) {
+        return (Math.round(value * exponent) / exponent).toFixed(precision);
+    }
+    else {
+        return Math.round(value * exponent) / exponent;
+    }
 }
 
 // a function that updates the clamp output
@@ -76,10 +84,16 @@ function updateClampOutput() {
     else {
         calculatedFontSize = clampMaxFontSize.value * clampZoomLevel.value / 100;
         calculatedPercentage = calculatedFontSize / originalFontSize * 100;
-        realFontSize = calculatedFontSize;
+        realFontSize = clampMaxFontSize.value;
     }
 
-    clampFormula.innerHTML = '<span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token function">clamp</span><span class="token punctuation">(</span>' + clampMinFontSize.value / 16 + 'rem<span class="token punctuation">,</span> ' + round(clampSlope * 100, 4) + 'vw + ' + round(interceptRem, 0) / 16 + 'rem<span class="token punctuation">,</span> ' + clampMaxFontSize.value / 16 + 'rem<span class="token punctuation">)</span><span class="token punctuation">;</span>';
+    // clampCalculateVw.innerHTML = round(clampSlope * 100, 4, false);
+    // clampCalculateRem.innerHTML = round(interceptRem / 16, 4, false);
+
+    // clampFormula.innerHTML = '<span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token function">clamp</span><span class="token punctuation">(</span>' + clampMinFontSize.value / 16 + 'rem<span class="token punctuation">,</span> ' + round(clampSlope * 100, 4, false) + 'vw + ' + round(interceptRem / 16, 4, false) + 'rem<span class="token punctuation">,</span> ' + round(clampMaxFontSize.value / 16, 4, false) + 'rem<span class="token punctuation">)</span><span class="token punctuation">;</span>';
+    // write the previous line again but with string template literals
+    clampFormula.innerHTML = `<span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token function">clamp</span><span class="token punctuation">(</span>${clampMinFontSize.value / 16}rem<span class="token punctuation">,</span> <span class="token output output--1">${round(clampSlope * 100, 4, false)}</span>vw + <span class="token output output--2">${round(interceptRem / 16, 4, false)}</span>rem<span class="token punctuation">,</span> ${round(clampMaxFontSize.value / 16, 4, false)}rem<span class="token punctuation">)</span><span class="token punctuation">;</span>`;
+
 
     clampOutput.innerHTML =
         `clamp(${clampMinFontSize.value}px, ${round(clampSlope, 4)} &times; ${round(viewPortWidth, 2)}px = ${round(clampSlope * viewPortWidth, 2)}px + ${round(interceptRem, 2)}px = ${round(clampFontSize, 2)}px, ${clampMaxFontSize.value}px)`;
@@ -91,7 +105,7 @@ function updateClampOutput() {
         // Math.round(calculatedFontSize) + 'px which is '
         // + Math.round(calculatedPercentage) + '% of '
         // + clampMaxFontSize.value + 'px';
-        `${round(realFontSize, 2)}px &times; ${clampZoomLevel.value}% = ${round(calculatedFontSize, 4)}px which is ${Math.round(calculatedPercentage)}% of ${clampMaxFontSize.value}px`;
+        `${round(realFontSize, 2)}px &times; ${clampZoomLevel.value}% = ${round(calculatedFontSize, 2)}px which is ${Math.round(calculatedPercentage)}% of ${clampMaxFontSize.value}px`;
 
     // set the min attribute of clampMaxWidth to the value of clampMinWidth + 10
     clampMaxWidth.setAttribute('min', parseInt(clampMinWidth.value) + 10);
@@ -111,6 +125,7 @@ updateClampOutput();
 
 // add an event listener to clampform that checks if something changes and runs updateClampOutput()
 clampform.addEventListener('input', updateClampOutput);
+zoomform.addEventListener('input', updateClampOutput);
 
 // add an event listener to window resize that logs the divecePixelRatio
 window.addEventListener('resize', function () {
