@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title or metadata.title }}</title>
     <meta name="description" content="{{ description or metadata.description }}">
-    <meta name="generator" content="{{ eleventy.generator }}"> {% set css %}
+    <meta name="generator" content="{{ eleventy.generator }}">
+    {% set css %}
     {% include "index.css" %}
     {% endset %}
     <style>
@@ -24,20 +25,14 @@
     <hr>
     <footer class="max-width-md">
       <p>
-        Last updated {{ generated }}. Next time you visit this website it might look
-        different. Or not, I don't know.
+        Last updated
+        {{ generated }}. Next time you visit this website it might look
+                different. Or not, I don't know.
       </p>
     </footer>
     <svg class="gradient-container" aria-hidden="true">
       <defs>
-        <linearGradient
-          id="gradient"
-          gradienttransform="scale(1.5)"
-          x1="0%"
-          y1="0%"
-          x2="100%"
-          y2="50%"
-          spreadmethod="pad">
+        <linearGradient id="gradient" gradienttransform="scale(1.5)" x1="0%" y1="0%" x2="100%" y2="50%" spreadmethod="pad">
           <stop class="gradient-stop-1" offset="0%" stop-color="tomato"/>
           <stop class="gradient-stop-2" offset="100%" stop-color="indigo"/>
         </linearGradient>
@@ -48,5 +43,6 @@
     {% endset %}
     <script>
       {{ js | jsmin | safe }}</script>
+    <script async defer src="https://scripts.withcabin.com/hello.js"></script>
   </body>
 </html>
