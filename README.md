@@ -4,8 +4,6 @@ Based on a starter repository showing how to build a blog with the [Eleventy](ht
 
 [![Build Status](https://travis-ci.org/11ty/eleventy-base-blog.svg?branch=master)](https://travis-ci.org/11ty/eleventy-base-blog)
 
-Or, read more about [Deploying an Eleventy project](https://www.11ty.dev/docs/deployment/).
-
 ## Run Eleventy
 
 ```
